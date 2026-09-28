@@ -62,15 +62,27 @@ Web plana de divulgación de la app cubana **YouChat** 📧💙 — Rápido, Seg
 
 ---
 
-## 👤 Autor
+## 🛠️ Tecnologías
 
-Milkár-Android 
+- HTML5
+- CSS3 (con variables para modo claro/oscuro)
+- JavaScript Vanilla
+- Lucide Icons (SVG)
+- Service Worker (PWA)
 
 ---
 
-## 📄 Licencia
+## 📧 Contacto
 
-MIT
+Desarrollador: **Milkár Lixán Pupo Riverón**  
+📧 maniabon.76@gmail.com
+
+---
+
+## License
+
+YouChat Web Plana está desarrollada bajo la **Licencia MIT**.
+
 
 ---
 
