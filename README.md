@@ -62,4 +62,16 @@ Web plana de divulgación de la app cubana **YouChat** 📧💙 — Rápido, Seg
 
 ---
 
+## 👤 Autor
+
+Milkár-Android 
+
+---
+
+## 📄 Licencia
+
+Mit
+
+---
+
 ## 📁 Estructura del proyecto
