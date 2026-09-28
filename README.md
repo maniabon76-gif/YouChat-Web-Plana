@@ -70,7 +70,7 @@ Milkár-Android
 
 ## 📄 Licencia
 
-Mit
+MIT
 
 ---
 
