@@ -79,7 +79,7 @@ Desarrollador: **Milkár Lixán Pupo Riverón**
 
 ---
 
-## 📄 License
+## 📄 Licencia 
 
 YouChat Web Plana está desarrollada bajo la **Licencia MIT**.
 
