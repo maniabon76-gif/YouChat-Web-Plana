@@ -79,10 +79,18 @@ Desarrollador: **Milkár Lixán Pupo Riverón**
 
 ---
 
-## 📄 Licencia 
+## 📜 Licencia
 
-YouChat Web Plana está desarrollada bajo la **Licencia MIT**.
+YouChat Web Plana está desarrollada bajo... (sin licencia abierta) Todos los derechos reservados 2026 ©️
 
+Copyright ©️ 2026 all the reserved by **@Milkár**
+
+Marca registrada **YouChat ®️©️**
+YouChat registered mark ®️©️
+
+---
+
+**YouChat 💙** — Rápido, Seguro y Moderno
 
 ---
 
