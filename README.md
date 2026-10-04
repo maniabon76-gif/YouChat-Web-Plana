@@ -111,4 +111,102 @@
 
 ---
 
+## ❓ Preguntas Frecuentes
+
+<details>
+<summary><strong>¿Qué es YouChat?</strong></summary>
+<p>Es una aplicación cubana de mensajería instantánea que funciona a través del correo electrónico (Nauta o Gmail).</p>
+</details>
+
+<details>
+<summary><strong>¿Es gratis?</strong></summary>
+<p>Sí, tanto la app como la web son 100% gratuitas.</p>
+</details>
+
+<details>
+<summary><strong>¿Dónde descargo la app?</strong></summary>
+<p>Puedes descargarla desde <a href="http://www.apklis.cu/application/cu.alexgi.youchat/">Apklis</a> o desde el Grupo Oficial de Telegram.</p>
+</details>
+
+---
+
+## 📧 Contacto
+
+- 📧 **Correo:** [maniabon.76@gmail.com](mailto:maniabon.76@gmail.com)
+- 🫂 **Telegram:** [Grupo Oficial](https://t.me/YouChat_Grupo_Oficial)
+- 📢 **Telegram:** [Canal Oficial](https://t.me/YouChat_Canal_Oficial)
+- 👨🏻‍💻 **Desarrollador:** Milkár Lixán Pupo Riverón
+
+---
+
+## 📜 License
+
+**Todos los derechos reservados © 2026 Milkár Lixán Pupo Riverón.**
+
+Este proyecto y todo su contenido (código fuente, imágenes, diseño, textos y recursos gráficos) están protegidos por las leyes de derechos de autor de la República de Cuba y los tratados internacionales aplicables.
+
+**No está permitido:**
+
+- ❌ Copiar, reproducir o distribuir total o parcialmente este proyecto.
+- ❌ Modificar, adaptar o crear obras derivadas sin autorización.
+- ❌ Usar con fines comerciales o no comerciales sin permiso expreso.
+- ❌ Redistribuir como producto propio.
+- ❌ Eliminar o alterar las menciones de autoría.
+- ❌ Sublicenciar o vender sin autorización del autor.
+
+**Sí está permitido:**
+
+- ✅ Ver el código con fines educativos.
+- ✅ Consultar el proyecto en su sitio oficial: [youchat.web.cu](https://youchat.web.cu)
+
+**Marca registrada:** YouChat ®️©️
+
+📧 **maniabon.76@gmail.com**
+
+---
+
+## 🚀 Release
+
+### 📌 Versión actual: `1.4.0`
+
+### 🆕 Cambios recientes (v1.4.0)
+
+- 🔍 **Buscador interno** con resultados en tiempo real.
+- 🇪🇸🇬🇧 **Multi-idioma** Español/Inglés.
+- 👤 **Sistema de usuarios registrados** con localStorage.
+- 📶 **Modo sin conexión mejorado** con indicadores visuales.
+- 🎨 Botones nuevos en el header: buscar, idioma, usuario.
+- ✅ Todo el contenido anterior se mantiene sin cambios.
+
+### 📜 Versiones anteriores
+
+| Versión | Cambios principales |
+|:-------:|---------------------|
+| **v1.3.0** | Favicons, manifest PWA, service-worker, .htaccess, robots.txt |
+| **v1.2.0** | Iconos SVG de Lucide, aniversario, formulario de contacto |
+| **v1.1.0** | Sección Staff, logo, pantalla "YouChat" en el slider |
+| **v1.0.0** | Lanzamiento inicial |
+
+---
+
+## 🙏 Agradecimientos
+
+<div align="center">
+
+**¡Gracias a todos los YouChateros que hacen posible este proyecto!** 💙
+
+### #YouChatVive #YouChaterosLuchando #YouChatAppCubana100%
+
+### #SiempreYouChat #VamosPorMás
+
+---
+
+**YouChat 💙** — Rápido, Seguro y Moderno
+
+*Hecho con ❤️ en Cuba, para el mundo* 🇨🇺
+
+</div>
+
+---
+
 ## 📁 Estructura del Proyecto
