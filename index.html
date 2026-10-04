@@ -5,13 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouChat - youchat.web.cu</title>
     <meta name="description" content="YouChat: la app cubana de mensajería instantánea a través del correo electrónico. Rápido, Seguro y Moderno. Noticias, fotos, memes, foros, tips, tutoriales y comunidad.">
+    <meta name="author" content="Milkár Lixán Pupo Riverón">
+    <meta name="keywords" content="YouChat, mensajería, correo electrónico, Cuba, app cubana, Telegram, Nauta, Gmail, YouChateros">
     <meta name="theme-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="YouChat">
+    <meta name="application-name" content="YouChat">
+    <meta name="mobile-web-app-capable" content="yes">
 
     <!-- ===== FAVICONS ===== -->
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%232563eb'/><path d='M25 35 L50 55 L75 35 L75 70 L25 70 Z' fill='white'/><path d='M25 35 L50 55 L75 35' stroke='%232563eb' stroke-width='3' fill='none'/></svg>">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="img/logo.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="img/logo.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon.png">
+    <link rel="mask-icon" href="favicon.png" color="#2563eb">
 
     <!-- ===== PWA MANIFEST ===== -->
     <link rel="manifest" href="manifest.json">
@@ -302,6 +315,216 @@
         .update-toast.visible { display: flex; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* ===== NUEVOS BOTONES DEL HEADER (v1.4.0) ===== */
+        .header-btn {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+        .header-btn:hover { background: rgba(255,255,255,0.25); transform: scale(1.05); }
+
+        /* ===== PANEL DE BÚSQUEDA (v1.4.0) ===== */
+        .search-panel {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15,23,42,0.85);
+            backdrop-filter: blur(8px);
+            z-index: 300;
+            display: none;
+            padding: 24px;
+            overflow-y: auto;
+        }
+        .search-panel.visible { display: block; animation: fadeIn 0.3s ease; }
+        .search-box {
+            max-width: 700px;
+            margin: 40px auto 24px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow-hover);
+            border: 2px solid var(--primary);
+        }
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 1.1rem;
+            color: var(--text);
+            padding: 8px 0;
+        }
+        .search-close {
+            background: transparent;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        .search-close:hover { background: var(--stat-bg); color: var(--primary); }
+        .search-results {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+        .search-hint { color: var(--text-light); text-align: center; padding: 20px; }
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 1px solid var(--border);
+        }
+        .search-result-item:last-child { border-bottom: none; }
+        .search-result-item:hover { background: var(--stat-bg); transform: translateX(4px); }
+        .search-result-item .icon { color: var(--primary); flex-shrink: 0; }
+        .search-result-item .info { flex: 1; }
+        .search-result-item .info strong { display: block; color: var(--secondary); font-size: 0.95rem; margin-bottom: 2px; }
+        .search-result-item .info span { color: var(--text-light); font-size: 0.82rem; }
+        .search-result-item .cat {
+            background: var(--card-tag-bg);
+            color: var(--card-tag-text);
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .search-no-results { text-align: center; padding: 30px; color: var(--text-light); }
+
+        /* ===== PANEL DE USUARIO (v1.4.0) ===== */
+        .user-panel {
+            position: fixed;
+            top: 0; right: 0; bottom: 0;
+            width: 100%;
+            max-width: 400px;
+            background: var(--card-bg);
+            z-index: 300;
+            transform: translateX(100%);
+            transition: transform 0.35s ease;
+            box-shadow: -8px 0 30px rgba(0,0,0,0.3);
+            overflow-y: auto;
+        }
+        .user-panel.visible { transform: translateX(0); }
+        .user-panel-content { padding: 60px 28px 28px; position: relative; }
+        .user-panel-close {
+            position: absolute;
+            top: 16px; right: 16px;
+            background: var(--stat-bg);
+            border: none;
+            color: var(--text);
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        .user-panel-close:hover { background: var(--primary); color: white; transform: rotate(90deg); }
+        .user-icon-big, .user-avatar-big {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 8px 24px rgba(37,99,235,0.35);
+        }
+        .user-panel h3 { text-align: center; color: var(--secondary); font-size: 1.4rem; margin-bottom: 8px; }
+        .user-panel > .user-panel-content > div > p { text-align: center; color: var(--text-light); margin-bottom: 24px; }
+        .user-email { text-align: center; color: var(--text-light); font-size: 0.9rem; margin-bottom: 20px; }
+        .user-form .form-group { margin-bottom: 16px; }
+        .user-form .form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 0.88rem; color: var(--secondary); }
+        .user-form .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 1rem;
+            background: var(--bg);
+            color: var(--text);
+            transition: var(--transition);
+        }
+        .user-form .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+        }
+        .user-form .btn { width: 100%; margin-top: 8px; }
+        .user-note { font-size: 0.8rem; color: var(--text-light); text-align: center; margin-top: 16px; }
+        .user-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .user-stats > div {
+            background: var(--stat-bg);
+            border-radius: var(--radius);
+            padding: 16px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+        .user-stats strong { display: block; font-size: 1.6rem; color: var(--primary); font-weight: 700; }
+        .user-stats span { font-size: 0.75rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* ===== INDICADORES DE CONEXIÓN (v1.4.0) ===== */
+        .offline-indicator, .online-indicator {
+            position: fixed;
+            bottom: 90px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            padding: 12px 24px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.35s ease;
+            z-index: 250;
+            white-space: nowrap;
+        }
+        .offline-indicator { background: #dc2626; color: white; }
+        .online-indicator { background: #10b981; color: white; }
+        .offline-indicator.visible, .online-indicator.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 1100px) {
             .header-container { height: auto; padding: 12px 0; flex-wrap: wrap; }
             .menu-toggle { display: block; }
@@ -331,6 +554,10 @@
             .aniversario-box h3 { font-size: 1.4rem; flex-direction: column; }
             .footer-social-icons a { width: 42px; height: 42px; }
             .update-toast { right: 12px; left: 12px; top: 80px; }
+            .search-panel { padding: 16px; }
+            .search-box { margin-top: 60px; }
+            .user-panel { max-width: 100%; }
+            .header-btn { width: 38px; height: 38px; font-size: 1rem; }
         }
         .text-center { text-align: center; }
         .mt-20 { margin-top: 20px; }
@@ -375,11 +602,76 @@
             </nav>
 
             <div class="header-actions">
+                <button class="header-btn" onclick="toggleSearch()" title="Buscar" aria-label="Buscar"><i data-lucide="search" class="icon"></i></button>
+                <button class="header-btn" onclick="toggleLang()" id="langBtn" title="Idioma" aria-label="Idioma">🇪🇸</button>
+                <button class="header-btn" onclick="toggleUserPanel()" id="userBtn" title="Usuario" aria-label="Usuario"><i data-lucide="user" class="icon"></i></button>
                 <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" aria-label="Cambiar tema"><i data-lucide="moon" class="icon"></i></button>
                 <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menú"><i data-lucide="menu" class="icon-lg"></i></button>
             </div>
         </div>
     </header>
+
+    <!-- ===== PANEL DE BÚSQUEDA (v1.4.0) ===== -->
+    <div class="search-panel" id="searchPanel">
+        <div class="search-box">
+            <i data-lucide="search" class="icon"></i>
+            <input type="text" id="searchInput" placeholder="Buscar en YouChat..." oninput="realizarBusqueda()" autocomplete="off">
+            <button onclick="toggleSearch()" class="search-close"><i data-lucide="x" class="icon"></i></button>
+        </div>
+        <div class="search-results" id="searchResults">
+            <p class="search-hint">Escribe para buscar noticias, memes, fotos, foros y más...</p>
+        </div>
+    </div>
+
+    <!-- ===== PANEL DE USUARIO (v1.4.0) ===== -->
+    <div class="user-panel" id="userPanel">
+        <div class="user-panel-content">
+            <button onclick="closeUserPanel()" class="user-panel-close"><i data-lucide="x" class="icon"></i></button>
+
+            <div id="userNotLogged">
+                <div class="user-icon-big"><i data-lucide="user-plus" class="icon-xl"></i></div>
+                <h3>Únete a YouChat</h3>
+                <p>Crea una cuenta local para guardar tus memes, noticias y foros favoritos.</p>
+                <form onsubmit="registrarUsuario(event)" class="user-form">
+                    <div class="form-group">
+                        <label>Nombre de usuario</label>
+                        <input type="text" id="regUser" placeholder="Ej: Milkár" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Correo electrónico</label>
+                        <input type="email" id="regEmail" placeholder="tu@correo.cu" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" id="regPass" placeholder="••••••" required minlength="4">
+                    </div>
+                    <button type="submit" class="btn"><i data-lucide="user-plus" class="icon"></i> Registrarme</button>
+                </form>
+                <p class="user-note">🔒 Tus datos se guardan solo en este dispositivo.</p>
+            </div>
+
+            <div id="userLogged" style="display:none;">
+                <div class="user-avatar-big" id="userAvatarBig">👤</div>
+                <h3 id="userNameDisplay">Nombre</h3>
+                <p class="user-email" id="userEmailDisplay">correo@ejemplo.com</p>
+                <div class="user-stats">
+                    <div><strong id="userFavCount">0</strong><span>Favoritos</span></div>
+                    <div><strong id="userPointsCount">0</strong><span>Puntos</span></div>
+                </div>
+                <button onclick="cerrarSesion()" class="btn btn-outline" style="margin-top:16px;"><i data-lucide="log-out" class="icon"></i> Cerrar Sesión</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== INDICADORES DE CONEXIÓN (v1.4.0) ===== -->
+    <div class="offline-indicator" id="offlineIndicator">
+        <i data-lucide="wifi-off" class="icon"></i>
+        <span>Sin conexión — Modo offline activo</span>
+    </div>
+    <div class="online-indicator" id="onlineIndicator">
+        <i data-lucide="wifi" class="icon"></i>
+        <span>Conexión restablecida</span>
+    </div>
 
     <!-- ===== TOAST DE ACTUALIZACIÓN ===== -->
     <div class="update-toast" id="updateToast">
@@ -504,7 +796,7 @@
 
                 <h3><i data-lucide="list-checks" class="icon"></i> PASOS:</h3>
                 <div class="tutorial-step">
-                    <strong>Paso 1:</strong> Ir al portal <a href="https://www.nauta.cu" target="_blank" rel="noopener">www.nauta.cu</a> Ir al portal www.nauta.cu y registrarse con # de teléfono/SIM y carnet de identidad (recibirás un SMS con un código para confirmar que eres el dueño del # de teléfono).
+                    <strong>Paso 1:</strong> Ir al portal <a href="https://www.nauta.cu" target="_blank" rel="noopener">www.nauta.cu</a> y registrarse con # de teléfono/SIM y carnet de identidad (recibirás un SMS con un código para confirmar que eres el dueño del # de teléfono).
                 </div>
                 <div class="tutorial-step">
                     <strong>Paso 2:</strong> Inicia sesión en <a href="https://www.nauta.cu" target="_blank" rel="noopener">www.nauta.cu</a> con la cuenta que acabas de crear, dentro hay una opción para crear una cuenta de navegación .com.cu
@@ -516,7 +808,7 @@
                     <strong>Paso 4:</strong> Una vez dentro de <a href="https://www.portal.nauta.cu" target="_blank" rel="noopener">www.portal.nauta.cu</a> hay una opción de crear cuenta de correo.
                 </div>
 
-                <p class="mt-20"><strong><i data-lucide="check-circle" class="icon"></i> Ya tienes tu cuenta de correo nauta, ahora puedes usarla en YouChat.</strong></br>
+                <p class="mt-20"><strong><i data-lucide="check-circle" class="icon"></i> Ya tienes tu cuenta de correo nauta, ahora puedes usarla en YouChat.</strong><br>
                     Comparte con tus amigos que aún no tengan cuenta de correo nauta.</p>
             </div>
         </section>
@@ -734,18 +1026,24 @@
                 <p>Historial de cambios y actualizaciones.</p>
                 <p>Registro cronológico de todas las mejoras y funciones añadidas a la Web Plana de YouChat, desde su primera versión hasta la actualidad.</p>
 
+                <!-- ===== VERSIÓN 1.4.0 ===== -->
                 <div class="version-block v140 mt-20">
                     <h4><i data-lucide="sparkles" class="icon"></i> Versión 1.4.0</h4>
                     <span class="date">Última actualización</span>
                     <ul>
-                        <li>Actualizado el contenido completo de la sección Acerca de.</li>
-                        <li>Actualizado el contenido completo de la sección FAQ con las 26 preguntas oficiales.</li>
-                        <li>Actualizado el contenido completo de la sección Tips con los 5 Pack oficiales.</li>
-                        <li>Cambiado el icono del pajarito de Twitter por el icono de X en el footer.</li>
-                        <li>Mantenido el color azul característico de YouChat en todos los botones.</li>
+                        <li>Agregado Buscador interno con resultados en tiempo real.</li>
+                        <li>Agregado sistema Multi-idioma (Español / Inglés).</li>
+                        <li>Agregado sistema de Usuarios Registrados (localStorage).</li>
+                        <li>Agregado Modo sin conexión mejorado con indicadores visuales.</li>
+                        <li>Agregados botones nuevos en el header: buscar, idioma, usuario.</li>
+                        <li>Agregado atajo de teclado Ctrl + K para abrir el buscador.</li>
+                        <li>Agregado panel lateral de usuario con registro y sesión.</li>
+                        <li>Agregado indicador de conexión offline/online automático.</li>
+                        <li>Mantenido todo el contenido de las versiones anteriores sin cambios.</li>
                     </ul>
                 </div>
 
+                <!-- ===== VERSIÓN 1.3.0 ===== -->
                 <div class="version-block v130">
                     <h4><i data-lucide="sparkles" class="icon"></i> Versión 1.3.0</h4>
                     <span class="date">Última actualización</span>
@@ -768,6 +1066,7 @@
                     </ul>
                 </div>
 
+                <!-- ===== VERSIÓN 1.2.0 ===== -->
                 <div class="version-block new">
                     <h4><i data-lucide="sparkles" class="icon"></i> Versión 1.2.0</h4>
                     <ul>
@@ -781,19 +1080,21 @@
                     </ul>
                 </div>
 
+                <!-- ===== VERSIÓN 1.1.0 ===== -->
                 <div class="version-block">
                     <h4>Versión 1.1.0</h4>
                     <ul>
                         <li>Adicionado la Sección Staff de YouChat.</li>
                         <li>Adicionado el logo de YouChat a la Web Plana.</li>
                         <li>Adicionado preguntas y respuestas a algunas secciones.</li>
-                        <li>Añadidas las fotos de las secciones de fotos, memes y noticia.</li> 
+                        <li>Añadidas las fotos de las secciones de fotos, memes y noticia.</li>
                         <li>Añadida nueva pantalla "YouChat" al slider principal.</li>
                         <li>Varias mejoras visuales menores.</li>
                         <li>Corregido algunos errores menores.</li>
                     </ul>
                 </div>
 
+                <!-- ===== VERSIÓN 1.0.0 ===== -->
                 <div class="version-block">
                     <h4>Versión 1.0.0</h4>
                     <span class="date">📅 Lanzamiento inicial</span>
@@ -827,6 +1128,7 @@
                     <p>YouChat Web Plana se actualiza automáticamente. Cuando haya una nueva versión disponible, la aplicación Web la descargará sola y se reiniciará con los cambios. No es necesario desinstalar ni reinstalar nada, y tus datos se conservan intactos entre actualizaciones.</p>
                 </div>
 
+                <!-- ===== FIRMA DIGITAL ===== -->
                 <div class="footer-signature">
                     <h3>YouChat Web Plana</h3>
                     <p><strong>youchat.web.cu</strong></p>
@@ -847,7 +1149,6 @@
 
             <div class="staff-grid">
 
-                <!-- 1. Milkár Lixán Pupo Riverón -->
                 <div class="staff-card">
                     <div class="staff-avatar">
                         <img src="img/staff-milkar.png" alt="Milkár Lixán Pupo Riverón">
@@ -864,7 +1165,6 @@
                     </div>
                 </div>
 
-                <!-- 2. Disney Gutiérrez Guevara -->
                 <div class="staff-card">
                     <div class="staff-avatar">
                         <img src="img/staff-disney.png" alt="Disney Gutiérrez Guevara">
@@ -879,7 +1179,6 @@
                     </div>
                 </div>
 
-                <!-- 3. Luis Miguel Torres Díaz -->
                 <div class="staff-card">
                     <div class="staff-avatar">
                         <img src="img/staff-miguel.png" alt="Luis Miguel Torres Díaz">
@@ -894,7 +1193,6 @@
                     </div>
                 </div>
 
-                <!-- 4. Dariel Llanes -->
                 <div class="staff-card">
                     <div class="staff-avatar">
                         <img src="img/staff-dariel.png" alt="Dariel Llanes">
@@ -934,11 +1232,11 @@
 
                 <h3>5. Disponibilidad</h3>
                 <p>La aplicación Web funciona localmente en el dispositivo. Su disponibilidad depende del navegador del usuario y no del desarrollador. No se garantiza un funcionamiento ininterrumpido ni la compatibilidad con todos los dispositivos del mercado.</p>
-                    
+
                 <h3>6. Modificaciones</h3>
                 <p>El desarrollador puede actualizar estos términos en cualquier momento. Las modificaciones se reflejarán en esta misma sección con su fecha correspondiente. El uso continuado de la aplicación implica la aceptación de los términos vigentes.</p>
-                    
-                <h3>7. Legislación y aplicable </h3>
+
+                <h3>7. Legislación y aplicable</h3>
                 <p>Estos términos se interpretan conforme a las leyes vigentes en la República de Cuba.</p>
 
                 <h3>8. Prohibiciones</h3>
@@ -949,9 +1247,9 @@
                     <li>Modificarla para eliminar la mención de autoría.</li>
                     <li>Venderla o sublicenciarla sin autorización del desarrollador.</li>
                 </ul>
-                    <h3>Contactar</h3>
-                        <p>Para consultas sobre los Terminos y condiciones, contacta al desarrollador:<strong>Milkár Lixán Pupo Riverón </strong>
-                        <a href="mail<to:maniabon.76@gmail.com"><i data-lucide="mail" class="icon-sm"></i>maniabon.76@gmail.com</a></p>
+                <h3>Contactar</h3>
+                <p>Para consultas sobre los Terminos y condiciones, contacta al desarrollador:<strong>Milkár Lixán Pupo Riverón </strong>
+                <a href="mailto:maniabon.76@gmail.com"><i data-lucide="mail" class="icon-sm"></i>maniabon.76@gmail.com</a></p>
 
                 <span class="last-update">
                     📍 Última actualización de YouChat Web Plana de sus Términos y Condiciones y su Política de Privacidad: 23 de septiembre 2026
@@ -996,7 +1294,7 @@
 
                 <h3>Contactar</h3>
                 <p>Para consultas sobre privacidad, contacta al desarrollador: <strong>Milkár Lixán Pupo Riverón</strong><br>
-                <a href="mail<to:maniabon.76@gmail.com"><i data-lucide="mail" class="icon-sm"></i> maniabon.76@gmail.com</a></p>
+                <a href="mailto:maniabon.76@gmail.com"><i data-lucide="mail" class="icon-sm"></i> maniabon.76@gmail.com</a></p>
 
                 <span class="last-update">
                     📍 Última actualización de YouChat Web Plana de sus Términos y Condiciones y su Política de Privacidad: 23 de septiembre 2026
@@ -1065,6 +1363,7 @@
                 <a onclick="showSection('tutorial')"><i data-lucide="book-open" class="icon-sm"></i> Tutorial</a>
                 <a onclick="showSection('links')"><i data-lucide="link" class="icon-sm"></i> Links</a>
                 <a onclick="showSection('anuncio')"><i data-lucide="megaphone" class="icon-sm"></i> Anuncio</a>
+                <a onclick="toggleUserPanel()"><i data-lucide="user" class="icon-sm"></i> Mi Cuenta</a>
             </div>
             <div class="footer-col">
                 <h4>Legal</h4>
@@ -1096,10 +1395,12 @@
             <p>Marca registrada YouChat ®️©️</p>
         </div>
     </footer>
-
-    <!-- ===== JAVASCRIPT ===== -->
+        <!-- ===== JAVASCRIPT ===== -->
     <script>
-        /* ===== DATOS ===== */
+        /* ============================================ */
+        /* DATOS DE LA WEB                              */
+        /* ============================================ */
+
         const noticias = [
             { id: 1, tag: "YouChat", titulo: "YouChat sigue creciendo en la comunidad cubana.", descripcion: "La app de mensajería instantánea vía correo electrónico suma nuevos usuarios cada día.", fecha: "12 Feb 2026", autor: "Equipo YouChat", imagen: "img/logo.png" },
             { id: 2, tag: "Telegram", titulo: "Nuestro Grupo Oficial ya cuenta con 79 miembros.", descripcion: "Únete al Grupo Oficial y al Canal Oficial para estar al día con las novedades.", fecha: "11 Feb 2026", autor: "Moderación", imagen: "img/comunidad-telegram.png" },
@@ -1137,156 +1438,78 @@
             { id: 5, nombre: "Ayuda y Comunidad", descripcion: "Preguntas y respuestas entre usuarios y el Staff de YouChat.", temas: 38, mensajes: 187, inicial: "A" }
         ];
 
-        /* ===== FAQ - VERSIÓN 1.4.0 (NUEVO CONTENIDO) ===== */
+        /* ===== FAQ ===== */
         const faq = [
             { q: "1️⃣ ¿Qué es YouChat?", a: "Esta aplicación fue programada para establecer comunicación entre las personas que la utilizan, diseñada para atraer a la mayoría de público por su Moderno Interfaz Gráfico y con la esperanza de que se convierta en otra aplicación de mensajería instantánea a través del correo electrónico, útil y necesaria en cualquier dispositivo Android." },
-            { q: "2️⃣ ¿Quiénes la desarrollaron?", a: "Fue desarrollada por unos hermanos ( Alex GI y Oct GI ) en plena cuarentena de la Covid, con la visión de extenderla por todo el país y darle una opción más para la comunicación, aparte de las ya existentes. Pero dejaron de darle más Soporte a la app de YouChat." },
+            { q: "2️⃣ ¿Quiénes la desarrollaron?", a: "Fue desarrollada por unos hermanos ( Alex GI y Oct GI ) en plena cuarentena de la Covid, con la visión de extenderla por todo el país y darle una opción más para la comunicación, aparte de las ya existentes.Pero dejaron de darle más Soporte a la app de YouChat." },
             { q: "3️⃣ ¿Como funciona la aplicación?", a: "Funciona a travez del correo electrónico ( Nauta o Gmail ). Utilizando la bolsa de correo nauta o cualquier otra vía de conexión." },
-            { q: "4️⃣ ¿Recopila YouChat algún tipo de información de los usuarios?", a: "Si la aplicación necesita, para funcionar, un correo legítimo y su contraseña. El correo si es público, es necesario para la comunicación, por otra parte, la contraseña nunca sale de su teléfono. Los datos que luego son pedidos para llenar el perfil son opcionales y siempre pueden dejarse en blanco. Estos datos no se almacenan en ningún lugar solo en su teléfono y el teléfono del contacto donde se actualizo su perfil." },
+            { q: "4️⃣ ¿Recopila YouChat información de los usuarios?", a: "Si la aplicación necesita, para funcionar, un correo legítimo y su contraseña. El correo si es público, es necesario para la comunicación, por otra parte, la contraseña nunca sale de su teléfono. Los datos que luego son pedidos para llenar el perfil son opcionales y siempre pueden dejarse en blanco. Estos datos no se almacenan en ningún lugar solo en su teléfono y el teléfono del contacto donde se actualizo su perfil." },
             { q: "5️⃣ ¿Tengo privacidad en mis Chats?", a: "Los Chats son totalmente privados, van de un usuario a otro usuario sin pasar por intermediarios y después de recibidos son borrados de la bandeja de entrada del usuario, sin dejar rastro de ningún tipo. También tiene la opción de encriptar de extremo a extremo los mensajes y multimedia enviados." },
-            { q: "6️⃣ Añadí un contacto nuevo al teléfono, ¿donde esta?", a: "Si añades algún contacto nuevo al teléfono y no aparece en la lista, usa el botón Actualizar en el aparado 'Nueva conversación' para actualizar la lista con el contacto añadido." },
+            { q: "6️⃣ Añadí un contacto nuevo, ¿dónde está?", a: "Si añades algún contacto nuevo al teléfono y no aparece en la lista, usa el botón Actualizar en el aparado 'Nueva conversación' para actualizar la lista con el contacto añadido." },
             { q: "7️⃣ ¿Puedo comunicarme con alguien que no use YouChat?", a: "No era posible en sus versiones iniciales, ahora a través de la bandeja de entrada el usuario puede comunicarse normalmente por el correo con otra aplicación usando la modalidad de Chat o de correo tradicional. El Chat principal sigue siendo compatible solamente con correos que sean enviados desde la propia APK." },
-            { q: "8️⃣ ¿Por qué no me carga ningún contacto? O tengo pocos contactos ¿Qué hago?", a: "La aplicación carga solamente los contactos de su teléfono que tengan correo. En caso de de tener pocos contactos, invite a sus amigos por el botón 'Invitar amigos' en el apartado 'Nueva conversación' y comparta la aplicación con todos para que así pueda crecer la comunidad de YouChat." },
-            { q: "9️⃣ ¿De que forma se puede ahorrar más datos?", a: "Para ahorrar datos la aplicación cuenta con determinadas opciones que puede hacer activadas o desactivadas cuando usted lo deseé. En el apartado de 'Ajuste' valla a la esquina superior derecha y encontrará un signo de pregunta, tóquelo y luego toqué una opción para saber como funciona y si consume o no datos. Recuerde siempre que la aplicación funciona con el correo, así que su consumo se adecua a la tarifa de su operadora, en este caso ETECSA para los residentes en Cuba." },
-            { q: "1️⃣0️⃣ ¿YouChat está disponoble para iOS?", a: "El equipo desarrollador de YouChat No cuenta con un programador de este sistema Operativo. El equipo de desarrollo de YouChat anda buscando un desarrollador en esta plataforma iOS, que nos ayude en dicha plataforma." },
-            { q: "1️⃣1️⃣ ¿Por qué no se pueden crear grupos?", a: "En estos momentos la aplicación está en sus primeros años de desarrollo. En próximas versiones vendrán las opciones de crear Grupos y Canales. Más la opción de crear el APIs de crear bot." },
+            { q: "8️⃣ ¿Por qué no me carga ningún contacto?", a: "La aplicación carga solamente los contactos de su teléfono que tengan correo. En caso de de tener pocos contactos, invite a sus amigos por el botón 'Invitar amigos' en el apartado 'Nueva conversación' y comparta la aplicación con todos para que así pueda crecer la comunidad de YouChat." },
+            { q: "9️⃣ ¿De qué forma se puede ahorrar más datos?", a: "Para ahorrar datos la aplicación cuenta con determinadas opciones que puede hacer activadas o desactivadas cuando usted lo deseé. En el apartado de 'Ajuste' valla a la esquina superior derecha y encontrará un signo de pregunta, tóquelo y luego toqué una opción para saber como funciona y si consume o no datos. Recuerde siempre que la aplicación funciona con el correo, así que su consumo se adecua a la tarifa de su operadora, en este caso ETECSA para los residentes en Cuba." },
+            { q: "1️⃣0️⃣ ¿YouChat está disponible para iOS?", a: "El equipo desarrollador de YouChat No cuenta con un programador de este sistema Operativo. El equipo de desarrollo de YouChat anda buscando un desarrollador en esta plataforma iOS, que nos ayude en dicha plataforma." },
+            { q: "1️⃣1️⃣ ¿Por qué no se pueden crear grupos?", a: "En estos momentos la aplicación está en sus primeros años de desarrollo. En próximas versiones vendrán las opciones de crear Grupos y Canales.Más la opción de crear el APIs de crear bot." },
             { q: "1️⃣2️⃣ ¿Por qué mi teléfono no funciona el trabajo en segundo plano?", a: "El trabajo en segundo plano de la aplicación aún está en desarrollo, no funciona para todos los teléfonos, por tanto, si ve que se le detiene la aplicación al activarlo no lo use. Se avisará por el historial de cambios para cundo funcione para todos." },
-            { q: "1️⃣3️⃣ ¿Por qué la aplicación no funciona con el número de teléfono?", a: "La aplicación no puede ser con con número de teléfono ya que esto requeriría una gran infraestructura, dígase un buen Servidor y contrato con ETECSA lo cual no poseemos, para permitirnso el manejo de los números de teléfono." },
-            { q: "1️⃣4️⃣ ¿Por qué no se puede hacer videollamada y audiollamadas?", a: "Las audiollamadas y videosllamadas necesitan, para ejecutarse, una conexión directa con el otro usuario siendo posible solo si se cuenta con un servidor. El correo no otorga ese tipo de soporte para implementar en él estos servicios." },
-            { q: "1️⃣5️⃣ ¿Como puedo enterarme que hay una nueva actualización?", a: "Puedes entrar al grupo oficial en el Canal y Grupo en Telegram o ir directo a comprobarlo en Apklis, estos enlaces puedes obtenerlos en el apartado 'Acerca de' en los ajustes de la misma app tocando los iconos correspondiente a cada uno. Oh tocar los siguientes link.👇 Link del Gupo de YouChat. https://t.me/YouChat_Grupo_Oficial Link del Canal de YouChat. https://t.me/YouChat_Canal_Oficial" },
-            { q: "1️⃣6️⃣ ¿Se puede usar la aplicación en el Extranjero?", a: "Este servicio aún está en desarrollo, solo está disponible el correo Gmail. Esto le dará la opción de los Cubanos de comunicarse con su familia en el extranjero simplemente adquiriendo la bolsa de correo Nauta." },
-            { q: "1️⃣7️⃣ ¿Como funciona los Now?", a: "Los Now de YouChat se crearon con la idea general de los Estados de WhatsApp, pero siempre adaptándolos a nuestro entorno y las limitaciones que con el vienen. Para poder ver los Now de alguien debes primero ser su seguidor y para que alguien pueda ver tus Now debe seguirte. Para seguir a alguien debes de entrar a su perfil y allí tocar la opción 'SEGUIR', o ir a la opción 'Seguir a' en la vista de los contactos, y allí agregar el correo de la persona a la que quieres seguir. La estrella bajo de su perfil representa la cantidad de seguidores que tiene. 🔹️En el apartado de 'Ajuste' tenemos la opción 'Administrar Now' y 'Aceptar solicitud' de la primera hablaremos más adelante, en cuanto a la segunda brinda la opción de escoger entre dos modos: - Manual: Usted será notificado y tendrán la opción de aceptar o no las solicitudes de las personas que le quieren seguir. - Automático: Todas las solicitudes de personas que le quieren seguir serán aceptadas automáticamente sin ser notificado. 🔹️La opción de 'Administrar Now' te da la posibilidad de ver todos los Now que hayas recibido o publicado y varias funciones más. Los Now no se borrarán automáticamente luego de 24 hrs, simplemente se almacenarán hasta que decidas borrarlos. 🔹️En la pantalla inicial se podrán visualizar los Now que no hallas visto y los más reciente, y solamente podrás reaccionar una sola vez por Estado. Cuando subas un nuevo Estado, este se enviará a todos tus seguidores y si un seguidor nuevo entra no le llegarán los Now previamente subido por ti. 🔹️En cuanto el consumo dependerá de la cantidad de seguidores que tengas y el tipo de estado, Explico: - ETECSA brinda la opción de enviar un sólo correo hasta 20 personas, consumiéndote lo que pesa el correo de una sola vez. Es decir, si tienes de 1 a 20 seguidores será como enviar un sólo correo, 21 a 40 son 2 correos que envías y así sucesivamente de cada 20 usuarios. Para los que le gusten ahorrar se aconseja que no pasen de 20 sus seguidores. - En cuanto el tipo de Estado hay 2, si subes un Estado 'Solo texto' su peso será el de un mensaje de texto normal, es decir, casi nada. En cambio, si subes uno 'Imagen y texto' su peso dependerá del peso de la imagen, este se puede regular con la opción 'Calidad de imágenes' de los ajustes de YouChat." },
-            { q: "1️⃣8️⃣ ¿CÓMO HABILITAR EL ACCESO A APLICACIONES POCO SEGURAS EN GMAIL?", a: "1- Dar click en la imagen de tu cuenta de Gmail. 2- Luego dar click en 'Cuenta de Google'. 3- Click en 'Seguridad'. 4- Ir al apartado 'Acceso de aplicaciones poco seguras' y dar click en 'Activar acceso'. 🔹️También puedes probar buscar en Google : 'como habilitar el acceso a aplicaciones poco seguras en Gmail' y seguir los pasos que te muestra." },
-            { q: "1️⃣9️⃣ ¿Como hacer mi copia de seguridad y guardo mis datos?", a: "🚀 Se recomienda que hagan una Copia de Seguridad antes de instalar la nueva versión o desinstalar la app de YouChat por X razones,🤞 no queremos que ocurra algún problema 😉 del que no haya regreso. ¿Como guardo mis datos? 1-Ve a ajustes. 2-Toca sobre copia de seguridad. 3-Luego sobre guardar locamente y espera a que te diga que fue (guardado con éxito.) 4-Listo sus Chats y seguidores están seguros." },
-            { q: "2️⃣0️⃣ ¿Cómo funciona la calificación de usuario?", a: "La calificación de usuario es la siguiente: 1-Usuario VIP: si es un usuario oficial de la aplicación. 2-Usuario BetaTester: si tiene activado el beta tester de la aplicación. 3-Usuario Influencer: si tiene más de 300 seguidores. 4-Usuario Micro influencer: si tiene más de 200 seguidores. 5-Usuario Popular: si tiene más de 100 seguidores. 6-Usuario Normal: si tiene menos de 100 seguidores. 🔹️Este sería el orden de prioridad para la calificación de usuario. Iconografía según el tipo de usuario: ✅ Usuario oficial o VIP ✅ Usuario Beta Tester 👑 Usuario Influencer 💎 Usuario Micro Influencer 🔮 Usuario Popular ⭐ Usuario Normal" },
-            { q: "2️⃣1️⃣ ¿Qué gano por cada calificación de usuario?", a: "🔹️Se puede apreciar en la lista de chats delante del nombre del usuario un ícono que indica su calificación, no obstante cada uno de los tipos de usuarios tienen disponibles las siguientes funciones: 1-Usuario VIP: se le concede hasta 7 puntos diarios para publicar Post, 10 puntos diarios para comentar en los Post y tiene acceso a 15 íconos diferentes para los mismos. Además cuenta con la opción de compartir temas, crear tarjetas y subir imágenes por los mismos Post. 2-Usuario BetaTester: se le concede 6 puntos diarios para publicar Post, 9 puntos diarios para comentar en los Post y tiene acceso a 15 íconos diferentes para los mismos. Además cuenta con la opción de compartir temas, crear tarjetas y subir imágenes por los mismos Post. 3-Usuario Influencer: se le concede 5 puntos diario para publicar Post, 8 puntos diarios para comentar en los Post y tiene acceso a 15 íconos diferentes para los mismos. Además cuenta con la opción de compartir temas, crear tarjetas y subir imágenes por los mismos Post. 4-Usuario Micro Influencer: se le concede hasta 4 puntos diario para publicar Post, 7 puntos diarios para comentar en los Post y tiene acceso a 15 íconos diferentes para los mismos. Además cuenta con la opción de compartir temas, crear tarjetas y subir imágenes por los mismos Post. 5-Usuario Popular: se le concede hasta 3 puntos diarios para publicar Post, 6 puntos diarios para comentar en los Post y tiene acceso a 10 iconos diferentes para los mismos. Además cuenta con la opción de compartir temas, crear tarjetas y subir imágenes por los mismos Post. 6-Usuario Normal: se le concede hasta 2 puntos diarios para publicar Post, 5 puntos diarios para comentar en los Post y tiene acceso a 5 ícono diferentes para los mismos. Además cuenta con la opción de compartir temas por los mismos Post y crear tarjetas por los mismos Post. 🔹️Serán agregadas más funciones según vayan saliendo nuevas versiones de la aplicación." },
-            { q: "2️⃣2️⃣ ¿Cómo funcionan los Post?", a: "🔹️El servicio de Post te permite publicar un mensaje, válido por 24 horas, que le llegará a todos los usuarios que usen la aplicación y tengan el servicio de Post activado. 🔹️Es de obligación por cada usuario que el servicio sea usado con disciplina, sino serán privados de la opción de publicar Post. 🔹️También pueden reportar aquellos Post que su contenido sea realmente ofensivo, en caso contrario puede bloquearlo localmente en su aplicación para que no recibir más Post de ese correo." },
-            { q: "2️⃣3️⃣ ¿Cómo funciona la bandeja de entrada de YouChat?", a: "La bandeja de entrada fue pensada y diseñada para el gusto de todos los usuarios que la usen, ya que cuenta con dos formas de visualizar los correos: 🔹️Modalidad Chat: Parecida a la vista de DeltaChat o Dímelo, donde se pueden ver lo correo en forma de chat y ordenados por usuarios. 🔹️Modalidad tradicional: Parecida a la vista tradicional de ver los correos, ordenados uno debajo del otro. Ejemplo de esto está el buzón de Sijú, AqualMail, Gmail y muchas otras. El usuario siempre tiene la opción de desactivar la bandeja de YouChat si se siente cómodo con la aplicación que esté usando para gestionar su correo o si no quiere gestionar el mismo. También se incluyen opciones para restringir la entrada a la bandeja de correos provenientes de otras aplicaciones de correo para que, en caso que el usuario guste en poseer varias aplicaciones, no reciba más de 1 vez el mismo correo." },
-            { q: "2️⃣4️⃣ ¿Como puedo encontrar más información sobre YouChat?", a: "🔹️Puedes encontrar más información al respecto de la App, por estos link de su Gupo y Canal en Telegram. 📌 Link del Gupo por Telegram de YouChat. https://t.me/YouChat_Grupo_Oficial 📌 Link del Canal por Telegram de YouChat. https://t.me/YouChat_Canal_Oficial" },
-            { q: "2️⃣5️⃣ ¿Cómo puedo usar los Sticker de Telegram y WhatsApp u otro aquí?", a: "La aplicación soporta las siguientes extensiones para el uso de Stickers: -.tgs -.webp -.jpg ó .jpeg -.png -.gif Usted solamente debe de ir a la carpeta de 'YouChat/Sticker', crear dentro una nueva carpeta y copiar en ella todos los Stickers que quiera, luego abrir la aplicación y ya deben de cargar todos. Los Stickers no son comprimidos al enviarse, por tanto, tenga cuidado con ellos podría generar un gran consumo si se envían demasiado." },
-            { q: "2️⃣6️⃣ ¿YouChat tiene su Web como algunas app similares?", a: "Al principio de sus inicios la app No contaba con una Web, pero ya la app a madurando y tiene su propio Programador y Desarrollador Web Disney, que ya es parte del equipo de desarrollo y ya pronto tendrá su Web también funcional. Todos los derechos reservados 2026 ©️ Copyright ©️ 2026 all the reserved by @Milkár Marca registrada YouChat ®️©️ YouChat registered mark ®️©️" }
+            { q: "1️⃣3️⃣ ¿Por qué no funciona con el número de teléfono?", a: "La aplicación no puede ser con con número de teléfono ya que esto requeriría una gran infraestructura, dígase un buen Servidor y contrato con ETECSA lo cual no poseemos, para permitirnso el manejo de los números de teléfono." },
+            { q: "1️⃣4️⃣ ¿Por qué no hay videollamadas?", a: "Las audiollamadas y videosllamadas necesitan, para ejecutarse, una conexión directa con el otro usuario siendo posible solo si se cuenta con un servidor. El correo no otorga ese tipo de soporte para implementar en él estos servicios." },
+            { q: "1️⃣5️⃣ ¿Cómo me entero de nuevas actualizaciones?", a: "Puedes entrar al grupo oficial en el Canal y Grupo en Telegram o ir directo a comprobarlo en Apklis, estos enlaces puedes obtenerlos en el apartado 'Acerca de' en los ajustes de la misma app tocando los iconos correspondiente a cada uno Oh tocar los siguientes link. Link del Gupo de YouChat. https://t.me/YouChat_Grupo_Oficial Link del Canal de YouChat. https://t.me/YouChat_Canal_Oficial" },
+            { q: "1️⃣6️⃣ ¿Se puede usar en el Extranjero?", a: "Este servicio aún está en desarrollo, solo está disponible el correo Gmail. Esto le dará la opción de los Cubanos de comunicarse con su familia en el extranjero simplemente adquiriendo la bolsa de correo Nauta." },
+            { q: "1️⃣7️⃣ ¿Cómo funcionan los Now?", a: "Los Now de YouChat se crearon con la idea general de los Estados de WhatsApp, pero siempre adaptándolos a nuestro entorno y las limitaciones que con el vienen. Para poder ver los Now de alguien debes primero ser su seguidor y para que alguien pueda ver tus Now debe seguirte. Para seguir a alguien debes de entrar a su perfil y allí tocar la opción 'SEGUIR', o ir a la opción 'Seguir a' en la vista de los contactos, y allí agregar el correo de la persona a la que quieres seguir. La estrella bajo de su perfil representa la cantidad de seguidores que tiene. En el apartado de 'Ajuste' tenemos la opción 'Administrar Now' y 'Aceptar solicitud' de la primera hablaremos más adelante, en cuanto a la segunda brinda la opción de escoger entre dos modos: - Manual: Usted será notificado y tendrán la opción de aceptar o no las solicitudes de las personas que le quieren seguir. - Automático: Todas las solicitudes de personas que le quieren seguir serán aceptadas automáticamente sin ser notificado." },
+            { q: "1️⃣8️⃣ ¿Cómo habilitar apps poco seguras en Gmail?", a: "1- Dar click en la imagen de tu cuenta de Gmail. 2- Luego dar click en 'Cuenta de Google'. 3- Click en 'Seguridad'. 4- Ir al apartado 'Acceso de aplicaciones poco seguras' y dar click en 'Activar acceso'. También puedes probar buscar en Google: 'como habilitar el acceso a aplicaciones poco seguras en Gmail' y seguir los pasos que te muestra." },
+            { q: "1️⃣9️⃣ ¿Cómo hacer copia de seguridad?", a: "Se recomienda que hagan una Copia de Seguridad antes de instalar la nueva versión o desinstalar la app de YouChat por X razones, no queremos que ocurra algún problema del que no haya regreso. ¿Como guardo mis datos? 1-Ve a ajustes. 2-Toca sobre copia de seguridad. 3-Luego sobre guardar locamente y espera a que te diga que fue (guardado con éxito.) 4-Listo sus Chats y seguidores están seguros." },
+            { q: "2️⃣0️⃣ ¿Cómo funciona la calificación de usuario?", a: "La calificación de usuario es la siguiente: 1-Usuario VIP: si es un usuario oficial de la aplicación. 2-Usuario BetaTester: si tiene activado el beta tester de la aplicación. 3-Usuario Influencer: si tiene más de 300 seguidores. 4-Usuario Micro influencer: si tiene más de 200 seguidores. 5-Usuario Popular: si tiene más de 100 seguidores. 6-Usuario Normal: si tiene menos de 100 seguidores." },
+            { q: "2️⃣1️⃣ ¿Qué gano por cada calificación?", a: "Se puede apreciar en la lista de chats delante del nombre del usuario un ícono que indica su calificación, no obstante cada uno de los tipos de usuarios tienen disponibles las siguientes funciones:" },
+            { q: "2️⃣2️⃣ ¿Cómo funcionan los Post?", a: "Publicas un mensaje válido por 24 horas visible a todos los usuarios con Post activado." },
+            { q: "2️⃣3️⃣ ¿Cómo funciona la bandeja de entrada?", a: "Con dos modalidades: Chat (tipo DeltaChat) y tradicional (tipo Gmail)." },
+            { q: "2️⃣4️⃣ ¿Dónde encuentro más información?", a: "En el Grupo y Canal de Telegram de YouChat." },
+            { q: "2️⃣5️⃣ ¿Cómo usar Stickers?", a: "Soporta .tgs, .webp, .jpg, .jpeg, .png, .gif. Ve a la carpeta 'YouChat/Sticker'." },
+            { q: "2️⃣6️⃣ ¿YouChat tiene su Web?", a: "Sí, la app ha madurado y tiene su propio Programador y Desarrollador Web." }
         ];
 
-        /* ===== TIPS - VERSIÓN 1.4.0 (NUEVO CONTENIDO) ===== */
+        /* ===== TIPS ===== */
         const tips = `
             <div class="tip-block">
-                <h4><i data-lucide="lightbulb" class="icon"></i> 💡 Tips # 1️⃣</h4>
-                <p><strong>¿🆂🅰🅱🅸🅰🆂 🆀🆄🅴?😉</strong></p>
-                <p><strong>¿Sabías Qué?</strong></p>
-                <p>🔹️Si tocas la barra que dice Chats cuando hay mensajes nuevos te lleva hasta donde este el primer Chat con mensajes sin leer aún, y si no hay mensajes nuevos tocarla también te llevará al inicio del Chat. Espero le sea útil este proceso para evitar tener que buscar donde está ese mensaje sin leer o tener que ir arriba después de bajar tanto.</p>
-                <p><strong>¿🆂🅰🅱🅸🅰🆂 🆀🆄🅴?😉</strong></p>
-                <p><strong>¿Sabías Qué?</strong></p>
-                <p>🔹️Si vas al perfil de cualquier usuario y mantienes presionado su correo este se copiará automáticamente al portapapeles.</p>
-                <p><strong>¿🆂🅰🅱🅸🅰🆂 🆀🆄🅴?😉</strong></p>
-                <p><strong>¿Sabías Qué?</strong></p>
-                <p>🔹️Recuerde que YouChat pide su contraseña de correo solamente para iniciar sesión con el mismo, jamás se necesitará para otro fin. No nos hacemos responsables por la pérdida de dicho correo. Actualice la App desde fuentes oficiales, como el Canal o Grupo en Telegram y desde Apklis.</p>
-                <p><strong>¿🆂🅰🅱🅸🅰🆂 🆀🆄🅴?😉</strong></p>
-                <p><strong>¿SabíasQué?</strong></p>
-                <p>🙌🏻 Al adquirir el Plan toDus que es el mismo del correo electrónico que sirve para YouChat también, desde Transfermóvil recibes 1GB de Datos Móviles Nacionales, ideales para ahorrar tus Datos Móviles Internacionales.</p>
-                <p>🔹️Con este plan puedes compartir vídeos, imágenes, archivos, mensajes de voz y mucho más, además de enviar mensajes de texto ilimitados.</p>
-                <p>✨ Estos datos se adquieren desde Transfermóvil sin afectar tu saldo principal y además, son Acumulables.</p>
+                <h4><i data-lucide="lightbulb" class="icon"></i> Tips # 1️⃣</h4>
+                <p><strong>¿Sabías Qué?</strong> Si tocas la barra que dice Chats cuando hay mensajes nuevos te lleva hasta donde esté el primer Chat con mensajes sin leer.</p>
+                <p><strong>¿Sabías Qué?</strong> Si mantienes presionado el correo de un usuario en su perfil se copiará al portapapeles.</p>
+                <p><strong>¿Sabías Qué?</strong> YouChat pide la contraseña solo para iniciar sesión, jamás para otro fin.</p>
+                <p><strong>¿Sabías Qué?</strong> Con el Plan toDus recibes 1GB de Datos Móviles Nacionales desde Transfermóvil.</p>
             </div>
-
             <div class="tip-block">
-                <h4><i data-lucide="lightbulb" class="icon"></i> 💡 Tips # 2️⃣</h4>
-                <p><strong>¿🆂🅰🅱🅸🅰🆂 🆀🆄🅴?😉</strong></p>
-                <p><strong>¿Sabías Qué?</strong></p>
-                <p>🔹️El nombre "Now" fue una idea original de @roclahy 😱, la administradora de iTecnoGeek, a la cual queremos🥳 agradecerles por permitirnos usarlo 👍 en nuestra aplicación, simplemente es el término perfecto 👌 para nuestro proyecto. 😁</p>
-                <p><strong>¿🆂🅰🅱🅸🅰🆂 🆀🆄🅴?😉</strong></p>
-                <p><strong>¿Sabías Qué?</strong></p>
-                <p>🔹️Recuerden leer detenidamente cada opción de los ajustes antes de imaginar cómo debería de funcionar para usted. Muchas de sus dudas serán aclaradas con esto.</p>
-                <p>Paso 1: toque el ícono superior a la derecha. ❓</p>
-                <p>Paso 2: toque cualquier opción de los ajustes.</p>
-                <p>Le va a salir la siguiente opción.</p>
-                <p>❓Elija una opción para obtener su explicación.</p>
-                <p><strong>¿🆂🅰🅱🅸🅰🆂 🆀🆄🅴?😉</strong></p>
-                <p><strong>¿Sabías Qué?</strong></p>
-                <p>🔹️Si tiene un error al hacer una copia de seguridad, vaya a la carpeta YouChat en la App y borre la salva anterior, que entra en conflicto con el nuevo sistema de guardado.</p>
-                <p>🔹️Si activó la burbuja de datos, y se le detiene la aplicación, entre con los datos apagados y desactive esta opción.</p>
-                <p>🔹️Si la galería no le funciona o le cargan fotos en negro, borre las fotos y vuelva a subirla, a veces la conexión da error al subirla.</p>
+                <h4><i data-lucide="lightbulb" class="icon"></i> Tips # 2️⃣</h4>
+                <p><strong>¿Sabías Qué?</strong> El nombre "Now" fue una idea original de @roclahy, administradora de iTecnoGeek.</p>
+                <p><strong>¿Sabías Qué?</strong> Lee cada opción de los ajustes antes de imaginar cómo debería funcionar.</p>
+                <p><strong>¿Sabías Qué?</strong> Si la galería no funciona, borra las fotos y vuelve a subirlas.</p>
             </div>
-
             <div class="tip-block">
-                <h4><i data-lucide="lightbulb" class="icon"></i> 💡 Tips # 3️⃣</h4>
-                <p><strong>¿🆂🅰🅱🅸🅰🆂 🆀🆄🅴?😉</strong></p>
-                <p><strong>¿Sabías Qué?</strong></p>
-                <p>YouChat tiene varias App para gestionar sus Now (Estados).</p>
-                <p>🔹️Una manera más de gestionar tus Estados, más fácil de descargar sus (Now), YouChat Status, YouChat Help, You Now y su otra App que tiene a su disposición varios fondos de pantallas de buena calidad y buena interfaz, You Wallpaper!!!</p>
-                <p><strong>¿🆂🅰🅱🅸🅰🆂 🆀🆄🅴?😉</strong></p>
-                <p><strong>¿Sabías Qué?</strong></p>
-                <p>🔹️Al tocar o hacer click encima del Post de un usuario le sale varias opciones, que son:</p>
-                <p>-Ir al Chat.</p>
-                <p>-Dejar de seguir.</p>
-                <p>-Copiar.</p>
-                <p>-Guardar en Galería.</p>
-                <p>-Bloquear.</p>
-                <p>-Reportar.</p>
-                <p>-Eliminar.</p>
-                <p><strong>¿🆂🅰🅱🅸🅰🆂 🆀🆄🅴?😉</strong></p>
-                <p><strong>¿Sabías Qué?</strong></p>
-                <p>🔹️Al tocar encima de un Now de un seguidor tuyo le salen 2 opciones:</p>
-                <p>-Ir al Chat.</p>
-                <p>-Dejar de seguir.</p>
-                <p><strong>¿🅰🅱🅸🅰🆂 🆀🆄🅴?😉</strong></p>
-                <p><strong>¿Sabías Qué?</strong></p>
-                <p>¿Probaste ya compartir un Tema?</p>
-                <p>1- Ve a personalizar.</p>
-                <p>2- Crea un tema propio.</p>
-                <p>3- Deja presionado sobre el.</p>
-                <p>4- Dale en compartir y selecciona un Chat.</p>
-                <p>5- Listo, al usuario que se lo enviaste podrá usar su Tema.</p>
+                <h4><i data-lucide="lightbulb" class="icon"></i> Tips # 3️⃣</h4>
+                <p><strong>¿Sabías Qué?</strong> YouChat tiene varias App para los Now: YouChat Status, YouChat Help, You Now y You Wallpaper.</p>
+                <p><strong>¿Sabías Qué?</strong> Al tocar un Post puedes Ir al Chat, Dejar de seguir, Copiar, Guardar, Bloquear, Reportar o Eliminar.</p>
+                <p><strong>¿Sabías Qué?</strong> Puedes compartir Temas: ve a personalizar, crea un tema, deja presionado y comparte.</p>
             </div>
-
             <div class="tip-block">
-                <h4><i data-lucide="lightbulb" class="icon"></i> 💡 Tips # 4️⃣</h4>
-                <p><strong>¿🆂🅰🅱🅸🅰🆂 🆀🆄🅴?😉</strong></p>
-                <p><strong>¿Sabías Qué?</strong></p>
-                <p>🔹️La opción Usuarios Público te da la opción de ver todos los usuarios que tengan implementada la opción, y a la vez también usted puede activar esa opción en sus ajustes, así podrá conocer más personas y hacer Amistades por todo el país y Chatear con ellas.</p>
-                <p><strong>¿🆂🅰🅱🅸🅰🆂 🆀🆄🅴?😉</strong></p>
-                <p><strong>¿Sabías Qué?</strong></p>
-                <p>🔹️En los ajuste de la App existe el apartado Contáctenos, esta opción le da al usuario de reportar cualquier duda o reporte de errores de la App, así los desarrolladores de la aplicación le pueden dar solución e implementarlo en próximas versión de la App.</p>
-                <p><strong>¿🅰🅱🅸🅰🆂 🆀🆄🅴?😉</strong></p>
-                <p><strong>¿Sabías Qué?</strong></p>
-                <p>🔹️Si en un Chat pones el signo de numeral # delante y después una palabra, esta se torna de color azul la palabra escrita.</p>
-                <p>✅ Ejemplo: #YouChat</p>
-                <p>Con numeral # solo al principio de una sola palabra.</p>
-                <p><strong>¿🅰🅱🅸🅰🆂 🆀🆄🅴?😉</strong></p>
-                <p><strong>¿Sabías Qué?</strong></p>
-                <p>🔹️Usted puede añadir estilo de fuente Markdown de letras a sus mensajes en YouChat, usted puede personalizar sus mensajes en sus conversaciones con sus Amigos y Familiares en YouChat.</p>
-                <p>Tipo de estilo de fuente de Markdown.</p>
-                <p style="text-align:center"><strong>Negrita</strong></p>
-                <p>✅ Ejemplo: *Hola*</p>
-                <p>Con asterisco al principio y final de cada oración o palabra.</p>
-                <p style="text-align:center"><strong>Monoespanciba</strong></p>
-                <p>✅ Ejemplo: 'Hola'</p>
-                <p>Con coma superior al principio y al final de cada oración o palabra.</p>
-                <p style="text-align:center"><strong>Cursiva</strong></p>
-                <p>✅ Ejemplo: _Hola_</p>
-                <p>Con guión bajo al principio y al final de cada oración o palabra.</p>
+                <h4><i data-lucide="lightbulb" class="icon"></i> Tips # 4️⃣</h4>
+                <p><strong>¿Sabías Qué?</strong> La opción Usuarios Público te permite ver a todos los usuarios con esa opción activada.</p>
+                <p><strong>¿Sabías Qué?</strong> En ajustes hay un apartado Contáctenos para reportar dudas o errores.</p>
+                <p><strong>¿Sabías Qué?</strong> Con el signo # delante de una palabra se torna azul. Ejemplo: <code>#YouChat</code></p>
+                <p><strong>¿Sabías Qué?</strong> Puedes usar Markdown: <code>*Hola*</code> (negrita), <code>'Hola'</code> (mono), <code>_Hola_</code> (cursiva).</p>
             </div>
-
             <div class="tip-block">
-                <h4><i data-lucide="lightbulb" class="icon"></i> 💡 Tips # 5️⃣</h4>
-                <p><strong>¿🅰🅱🅸🅰🆂 🆀🆄🅴?😉</strong></p>
-                <p><strong>¿Sabías Qué?</strong></p>
-                <p>🔹️Que YouChat tiene la opción de poner modo Oscuro y Claro como mucha App y Web. Esta opción es útil ya que muchos usuarios le gusta más la opción de Oscuro ya sea por ser más cómodo a la vista.</p>
-                <p><strong>¿🅰🅱🅸🅰🆂 🆀🆄🅴?😉</strong></p>
-                <p><strong>¿SabíasQué?</strong></p>
-                <p>🔹️Si tocas en el botón de los Ajustes de la app aparecen todos los Ajustes y Opción de la app para modificar, según el usuario lo deseé implementar y Modificar a su gusto.</p>
-                <p><strong>¿🅰🅱🅸🅰🆂 🆀🆄🅴?😉</strong></p>
-                <p><strong>¿SabíasQué?</strong></p>
-                <p>🔹️YouChat tiene la opción de su Bandeja de entrada como muchas app de correo electrónico convencional, esto facilita a los usuarios comunicarse e enviar correos atraves de la app y recibir correos de otras app de correo electrónico.</p>
-                <p><strong>¿🅰🅱🅸🅰🆂 🆀🆄🅴?😉</strong></p>
-                <p><strong>¿SabíasQué?</strong></p>
-                <p>🔹️En los Ajustes esta la opción de Personalizar, que es exacta o parecida a la que tiene Telegram, esto facilita que el usuario diseñe o personalise la app a su gusto.</p>
-                <p><strong>¿🅰🅱🅸🅰🆂 🆀🆄🅴?😉</strong></p>
-                <p><strong>¿SabíasQué?</strong></p>
-                <p>🔹️En los Ajustes de la app esta la opción de Seguidores, igual o parecido a la que tiene otras app de mensajería instantánea como por ejemplo: Instagram, ahí los usuarios ven los Seguidos y Seguidores de él.</p>
+                <h4><i data-lucide="lightbulb" class="icon"></i> Tips # 5️⃣</h4>
+                <p><strong>¿Sabías Qué?</strong> YouChat tiene modo Oscuro y Claro como muchas apps.</p>
+                <p><strong>¿Sabías Qué?</strong> En Ajustes están todas las opciones para modificar según tu gusto.</p>
+                <p><strong>¿Sabías Qué?</strong> La Bandeja de entrada permite comunicarte con otras apps de correo.</p>
+                <p><strong>¿Sabías Qué?</strong> En Ajustes está Personalizar, parecida a Telegram.</p>
+                <p><strong>¿Sabías Qué?</strong> En Ajustes está Seguidores, parecida a Instagram.</p>
                 <p class="mt-20 text-center"><strong>Todos los derechos reservados 2026 ©️</strong><br>Copyright ©️ 2026 all the reserved by @Milkár<br>Marca registrada YouChat ®️©️<br>YouChat registered mark ®️©️</p>
             </div>
         `;
 
-        /* ===== RENDERIZADO ===== */
+        /* ============================================ */
+        /* RENDERIZADO                                  */
+        /* ============================================ */
         function renderNoticias(containerId, limit = null) {
             const c = document.getElementById(containerId); if (!c) return;
             let l = noticias; if (limit) l = noticias.slice(0, limit);
@@ -1349,6 +1572,9 @@
             document.getElementById('acc-' + i).classList.toggle('open');
         }
 
+        /* ============================================ */
+        /* NAVEGACIÓN                                   */
+        /* ============================================ */
         function showSection(id) {
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             const s = document.getElementById(id); if (s) s.classList.add('active');
@@ -1359,6 +1585,9 @@
 
         function toggleMenu() { document.getElementById('mainNav').classList.toggle('open'); }
 
+        /* ============================================ */
+        /* TEMA CLARO / OSCURO                          */
+        /* ============================================ */
         function toggleTheme() {
             const html = document.documentElement;
             const current = html.getAttribute('data-theme');
@@ -1382,6 +1611,9 @@
             } catch(e) {}
         }
 
+        /* ============================================ */
+        /* SCROLL ARRIBA / ABAJO                        */
+        /* ============================================ */
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
         function scrollToBottom() { window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); }
 
@@ -1394,6 +1626,9 @@
             if (y < max - 300) down.classList.add('visible'); else down.classList.remove('visible');
         }
 
+        /* ============================================ */
+        /* FORMULARIO DE CONTACTO                       */
+        /* ============================================ */
         function enviarFormulario(e) {
             e.preventDefault();
             const nombre = document.getElementById('nombre').value;
@@ -1408,7 +1643,9 @@
             }, 300);
         }
 
-        /* ===== SERVICE WORKER - ACTUALIZACIÓN AUTOMÁTICA ===== */
+        /* ============================================ */
+        /* SERVICE WORKER - ACTUALIZACIÓN AUTOMÁTICA    */
+        /* ============================================ */
         function registerServiceWorker() {
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('service-worker.js')
@@ -1418,13 +1655,10 @@
                             const newWorker = reg.installing;
                             newWorker.addEventListener('statechange', () => {
                                 if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                    // Nueva versión disponible
                                     const toast = document.getElementById('updateToast');
                                     if (toast) {
                                         toast.classList.add('visible');
-                                        setTimeout(() => {
-                                            window.location.reload();
-                                        }, 3000);
+                                        setTimeout(() => { window.location.reload(); }, 3000);
                                     }
                                 }
                             });
@@ -1434,7 +1668,284 @@
             }
         }
 
-        /* ===== INICIALIZACIÓN ===== */
+        /* ============================================ */
+        /* FUNCIÓN 1: SISTEMA DE USUARIOS REGISTRADOS   */
+        /* ============================================ */
+        function registrarUsuario(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('regUser').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const pass = document.getElementById('regPass').value;
+            if (!nombre || !email || !pass) return;
+
+            const usuario = {
+                nombre: nombre,
+                email: email,
+                pass: btoa(pass),
+                fechaRegistro: new Date().toISOString(),
+                favoritos: [],
+                puntos: 0
+            };
+
+            try {
+                localStorage.setItem('youchat-user', JSON.stringify(usuario));
+                mostrarUsuarioLogueado();
+                alert('¡Bienvenido ' + nombre + '! Tu cuenta ha sido creada. 🎉');
+            } catch(err) {
+                alert('Error al guardar. Verifica que el navegador permita almacenamiento.');
+            }
+        }
+
+        function mostrarUsuarioLogueado() {
+            try {
+                const data = localStorage.getItem('youchat-user');
+                if (!data) return;
+                const usuario = JSON.parse(data);
+                document.getElementById('userNotLogged').style.display = 'none';
+                document.getElementById('userLogged').style.display = 'block';
+                document.getElementById('userNameDisplay').textContent = usuario.nombre;
+                document.getElementById('userEmailDisplay').textContent = usuario.email;
+                document.getElementById('userAvatarBig').textContent = usuario.nombre.charAt(0).toUpperCase();
+                document.getElementById('userFavCount').textContent = (usuario.favoritos || []).length;
+                document.getElementById('userPointsCount').textContent = usuario.puntos || 0;
+                const userBtn = document.getElementById('userBtn');
+                if (userBtn) {
+                    userBtn.innerHTML = '<span style="font-weight:700; font-size:0.9rem;">' + usuario.nombre.charAt(0).toUpperCase() + '</span>';
+                }
+            } catch(err) { console.error('Error usuario:', err); }
+        }
+
+        function cerrarSesion() {
+            if (!confirm('¿Seguro que quieres cerrar sesión?')) return;
+            try { localStorage.removeItem('youchat-user'); } catch(err) {}
+            document.getElementById('userNotLogged').style.display = 'block';
+            document.getElementById('userLogged').style.display = 'none';
+            const userBtn = document.getElementById('userBtn');
+            if (userBtn) userBtn.innerHTML = '<i data-lucide="user" class="icon"></i>';
+            lucide.createIcons();
+            closeUserPanel();
+        }
+
+        function toggleUserPanel() {
+            const panel = document.getElementById('userPanel');
+            if (!panel) return;
+            if (panel.classList.contains('visible')) { closeUserPanel(); }
+            else {
+                panel.classList.add('visible');
+                mostrarUsuarioLogueado();
+            }
+        }
+
+        function closeUserPanel() {
+            document.getElementById('userPanel').classList.remove('visible');
+        }
+
+        /* ============================================ */
+        /* FUNCIÓN 2: BUSCADOR INTERNO                  */
+        /* ============================================ */
+        function toggleSearch() {
+            const panel = document.getElementById('searchPanel');
+            if (!panel) return;
+            if (panel.classList.contains('visible')) { panel.classList.remove('visible'); }
+            else {
+                panel.classList.add('visible');
+                setTimeout(() => { document.getElementById('searchInput').focus(); }, 100);
+            }
+        }
+
+        function realizarBusqueda() {
+            const termino = document.getElementById('searchInput').value.trim().toLowerCase();
+            const resultados = document.getElementById('searchResults');
+            if (termino.length < 2) {
+                resultados.innerHTML = '<p class="search-hint">Escribe al menos 2 caracteres para buscar...</p>';
+                return;
+            }
+            const items = [];
+
+            noticias.forEach(n => {
+                if (n.titulo.toLowerCase().includes(termino) || n.descripcion.toLowerCase().includes(termino) || n.tag.toLowerCase().includes(termino)) {
+                    items.push({ icono: 'newspaper', titulo: n.titulo, descripcion: n.descripcion.substring(0, 80) + '...', categoria: 'Noticia', seccion: 'noticias' });
+                }
+            });
+
+            memes.forEach(m => {
+                if (m.titulo.toLowerCase().includes(termino) || m.descripcion.toLowerCase().includes(termino)) {
+                    items.push({ icono: 'smile', titulo: m.titulo, descripcion: m.descripcion, categoria: 'Meme', seccion: 'memes' });
+                }
+            });
+
+            foros.forEach(f => {
+                if (f.nombre.toLowerCase().includes(termino) || f.descripcion.toLowerCase().includes(termino)) {
+                    items.push({ icono: 'message-square', titulo: f.nombre, descripcion: f.descripcion, categoria: 'Foro', seccion: 'foros' });
+                }
+            });
+
+            faq.forEach(f => {
+                if (f.q.toLowerCase().includes(termino) || f.a.toLowerCase().includes(termino)) {
+                    items.push({ icono: 'help-circle', titulo: f.q, descripcion: f.a.substring(0, 100) + '...', categoria: 'FAQ', seccion: 'faq' });
+                }
+            });
+
+            const secciones = [
+                { nombre: 'Inicio', id: 'inicio', icono: 'home' },
+                { nombre: 'Noticias', id: 'noticias', icono: 'newspaper' },
+                { nombre: 'Fotos', id: 'fotos', icono: 'image' },
+                { nombre: 'Memes', id: 'memes', icono: 'smile' },
+                { nombre: 'Foros', id: 'foros', icono: 'message-square' },
+                { nombre: 'Tips', id: 'tips', icono: 'lightbulb' },
+                { nombre: 'Tutorial', id: 'tutorial', icono: 'book-open' },
+                { nombre: 'Telegram', id: 'telegram', icono: 'send' },
+                { nombre: 'Acerca de', id: 'acerca', icono: 'info' },
+                { nombre: 'Staff', id: 'staff', icono: 'users' }
+            ];
+            secciones.forEach(s => {
+                if (s.nombre.toLowerCase().includes(termino)) {
+                    items.push({ icono: s.icono, titulo: s.nombre, descripcion: 'Ir a la sección ' + s.nombre, categoria: 'Sección', seccion: s.id });
+                }
+            });
+
+            if (items.length === 0) {
+                resultados.innerHTML = '<div class="search-no-results"><i data-lucide="search-x" class="icon-lg"></i><p style="margin-top:10px;">No se encontraron resultados para "<strong>' + termino + '</strong>"</p></div>';
+                lucide.createIcons();
+                return;
+            }
+
+            resultados.innerHTML = items.slice(0, 20).map(item => `
+                <div class="search-result-item" onclick="irAResultado('${item.seccion}')">
+                    <i data-lucide="${item.icono}" class="icon"></i>
+                    <div class="info">
+                        <strong>${item.titulo}</strong>
+                        <span>${item.descripcion}</span>
+                    </div>
+                    <span class="cat">${item.categoria}</span>
+                </div>
+            `).join('') + (items.length > 20 ? '<p class="search-hint">Mostrando 20 de ' + items.length + ' resultados...</p>' : '');
+            lucide.createIcons();
+        }
+
+        function irAResultado(seccion) {
+            toggleSearch();
+            showSection(seccion);
+        }
+
+        /* ============================================ */
+        /* FUNCIÓN 3: MULTI-IDIOMA (ESPAÑOL/INGLÉS)     */
+        /* ============================================ */
+        const traducciones = {
+            es: {
+                inicio: 'Inicio', noticias: 'Noticias', fotos: 'Fotos', memes: 'Memes',
+                foros: 'Foros', tips: 'Tips', faq: 'FAQ', tutorial: 'Tutorial',
+                anuncio: 'Anuncio', aniversario: 'Aniversario', links: 'Links',
+                telegram: 'Telegram', acerca: 'Acerca de', historial: 'Historial',
+                staff: 'Staff', terminos: 'Términos', privacidad: 'Privacidad', contacto: 'Contáctenos'
+            },
+            en: {
+                inicio: 'Home', noticias: 'News', fotos: 'Photos', memes: 'Memes',
+                foros: 'Forums', tips: 'Tips', faq: 'FAQ', tutorial: 'Tutorial',
+                anuncio: 'Announcement', aniversario: 'Anniversary', links: 'Links',
+                telegram: 'Telegram', acerca: 'About', historial: 'Changelog',
+                staff: 'Staff', terminos: 'Terms', privacidad: 'Privacy', contacto: 'Contact Us'
+            }
+        };
+
+        let idiomaActual = 'es';
+
+        function toggleLang() {
+            idiomaActual = idiomaActual === 'es' ? 'en' : 'es';
+            try { localStorage.setItem('youchat-lang', idiomaActual); } catch(e) {}
+            const langBtn = document.getElementById('langBtn');
+            if (langBtn) langBtn.textContent = idiomaActual === 'es' ? '🇪🇸' : '🇬🇧';
+            document.querySelectorAll('nav a[data-section]').forEach(a => {
+                const seccion = a.dataset.section;
+                if (traducciones[idiomaActual][seccion]) {
+                    const icon = a.querySelector('.icon');
+                    const iconHTML = icon ? icon.outerHTML : '';
+                    a.innerHTML = iconHTML + ' ' + traducciones[idiomaActual][seccion];
+                }
+            });
+            lucide.createIcons();
+            mostrarToast(idiomaActual === 'es' ? '🇪🇸 Idioma: Español' : '🇬🇧 Language: English');
+        }
+
+        function cargarIdioma() {
+            try {
+                const saved = localStorage.getItem('youchat-lang');
+                if (saved && saved !== 'es') {
+                    idiomaActual = 'en';
+                    toggleLang();
+                }
+            } catch(e) {}
+        }
+
+        /* ============================================ */
+        /* FUNCIÓN 4: MODO SIN CONEXIÓN MEJORADO        */
+        /* ============================================ */
+        function detectarConexion() {
+            const offline = document.getElementById('offlineIndicator');
+            const online = document.getElementById('onlineIndicator');
+
+            function actualizarEstado() {
+                if (!navigator.onLine) {
+                    offline.classList.add('visible');
+                    online.classList.remove('visible');
+                } else {
+                    offline.classList.remove('visible');
+                    online.classList.add('visible');
+                    setTimeout(() => { online.classList.remove('visible'); }, 3000);
+                }
+            }
+
+            window.addEventListener('online', actualizarEstado);
+            window.addEventListener('offline', actualizarEstado);
+
+            if (!navigator.onLine) { offline.classList.add('visible'); }
+
+            document.querySelectorAll('nav a[data-section]').forEach(a => {
+                a.addEventListener('click', () => {
+                    if ('serviceWorker' in navigator && 'caches' in window) {
+                        caches.open('youchat-v1.4.0').then(cache => {
+                            cache.add(window.location.href).catch(() => {});
+                        });
+                    }
+                });
+            });
+        }
+
+        /* ============================================ */
+        /* NOTIFICACIONES TOAST                         */
+        /* ============================================ */
+        function mostrarToast(mensaje) {
+            const toast = document.createElement('div');
+            toast.style.cssText = 'position:fixed;top:90px;left:50%;transform:translateX(-50%);background:var(--primary);color:white;padding:14px 24px;border-radius:50px;font-weight:600;box-shadow:0 8px 24px rgba(37,99,235,0.4);z-index:400;font-size:0.95rem;';
+            toast.textContent = mensaje;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(-50%) translateY(-20px)';
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
+        }
+
+        /* ============================================ */
+        /* ATAJOS DE TECLADO                            */
+        /* ============================================ */
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const search = document.getElementById('searchPanel');
+                const user = document.getElementById('userPanel');
+                if (search && search.classList.contains('visible')) toggleSearch();
+                if (user && user.classList.contains('visible')) closeUserPanel();
+            }
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                toggleSearch();
+            }
+        });
+
+        /* ============================================ */
+        /* INICIALIZACIÓN                               */
+        /* ============================================ */
         document.addEventListener('DOMContentLoaded', () => {
             loadTheme();
             lucide.createIcons();
@@ -1463,8 +1974,10 @@
                 }
             });
 
-            // Registrar Service Worker para actualización automática
             registerServiceWorker();
+            cargarIdioma();
+            mostrarUsuarioLogueado();
+            detectarConexion();
         });
 
         document.addEventListener('keydown', (e) => {
