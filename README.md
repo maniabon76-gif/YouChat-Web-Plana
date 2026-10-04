@@ -79,14 +79,52 @@ Desarrollador: **Milkár Lixán Pupo Riverón**
 
 ---
 
-## 📜 Licencia
+## 📜 License
 
-YouChat Web Plana está desarrollada bajo... (sin licencia abierta) Todos los derechos reservados 2026 ©️
+**Todos los derechos reservados © 2026 Milkár Lixán Pupo Riverón.**
 
-Copyright ©️ 2026 all the reserved by **@Milkár**
+Este proyecto y todo su contenido (código fuente, imágenes, diseño, textos y recursos gráficos) están protegidos por las leyes de derechos de autor de la República de Cuba y los tratados internacionales aplicables.
 
-Marca registrada **YouChat ®️©️**
-YouChat registered mark ®️©️
+**No está permitido:**
+
+- ❌ Copiar, reproducir o distribuir total o parcialmente este proyecto.
+- ❌ Modificar, adaptar o crear obras derivadas sin autorización.
+- ❌ Usar con fines comerciales o no comerciales sin permiso expreso.
+- ❌ Redistribuir como producto propio.
+- ❌ Eliminar o alterar las menciones de autoría.
+- ❌ Sublicenciar o vender sin autorización del autor.
+
+**Sí está permitido:**
+
+- ✅ Ver el código con fines educativos.
+- ✅ Consultar el proyecto en su sitio oficial: https://youchat.web.cu
+
+**Marca registrada:** YouChat ®️©️
+
+Para solicitar permisos de uso, distribución o colaboración, contacta al autor:
+
+📧 **maniabon.76@gmail.com**
+
+---
+
+## Release
+
+**Versión actual:** `1.4.0`
+
+### Cambios recientes (v1.4.0)
+
+- Actualizado el contenido completo de la sección **FAQ** con las 26 preguntas oficiales.
+- Actualizado el contenido completo de la sección **Tips** con los 5 Pack oficiales.
+- Cambiado el icono del pajarito de Twitter por el icono de **X** en el footer.
+- Mantenido el color azul característico de YouChat en todos los botones.
+- Mejoras visuales menores y optimización del rendimiento.
+
+### Versiones anteriores
+
+- **v1.3.0** — Favicons, manifest PWA, service-worker, .htaccess, robots.txt.
+- **v1.2.0** — Iconos SVG de Lucide, aniversario, formulario de contacto.
+- **v1.1.0** — Sección Staff, logo, pantalla "YouChat" en el slider.
+- **v1.0.0** — Lanzamiento inicial.
 
 ---
 
