@@ -50,6 +50,12 @@
       "short_name": "Tips",
       "url": "./index.html#tips",
       "icons": [{ "src": "img/logo.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Mi Cuenta",
+      "short_name": "Cuenta",
+      "url": "./index.html#cuenta",
+      "icons": [{ "src": "img/logo.png", "sizes": "96x96" }]
     }
   ]
 }
