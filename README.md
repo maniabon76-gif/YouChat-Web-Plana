@@ -139,6 +139,90 @@
 
 ---
 
+## 👨‍💻 Desarrollador
+
+**Milkár Lixán Pupo Riverón**
+
+- 📧 Correo: [maniabon.76@gmail.com](mailto:maniabon.76@gmail.com)
+- 🐙 GitHub: [@maniabon76-gif](https://github.com/maniabon76-gif)
+- 📦 Repositorio: [YouChat-](https://github.com/maniabon76-gif/YouChat-)
+- 🇨🇺 Hecho en Cuba con ❤️ para la comunidad cubana
+
+<p align="center">
+  <a href="mailto:maniabon.76@gmail.com">
+    <img src="https://img.shields.io/badge/Email-maniabon.76@gmail.com-red?style=for-the-badge&logo=gmail&logoColor=white" alt="Email">
+  </a>
+  <a href="https://github.com/maniabon76-gif">
+    <img src="https://img.shields.io/badge/GitHub-maniabon76--gif-black?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+  </a>
+  <a href="https://github.com/maniabon76-gif/YouChat-">
+    <img src="https://img.shields.io/badge/Repositorio-YouChat-blue?style=for-the-badge&logo=git&logoColor=white" alt="Repositorio">
+  </a>
+  <br>
+  <img src="https://img.shields.io/badge/Hecho%20en-Cuba%20🇨🇺-red?style=for-the-badge" alt="Hecho en Cuba">
+</p>
+
+---
+
+## 📞 Contacto Oficial de YouChat
+
+<p align="center">
+  <a href="https://t.me/YouChat_Grupo_Oficial">
+    <img src="https://img.shields.io/badge/Telegram-Grupo%20Oficial-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Grupo Telegram">
+  </a>
+  <a href="https://t.me/YouChat_Canal_Oficial">
+    <img src="https://img.shields.io/badge/Telegram-Canal%20Oficial-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Canal Telegram">
+  </a>
+  <a href="https://youtube.com/@app_youchat">
+    <img src="https://img.shields.io/badge/YouTube-Oficial-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube">
+  </a>
+  <br>
+  <a href="https://chat.whatsapp.com/Le4CRk0T8MdLOFBrvj46Ck">
+    <img src="https://img.shields.io/badge/WhatsApp-Oficial-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp">
+  </a>
+  <a href="https://www.instagram.com/app_youchat">
+    <img src="https://img.shields.io/badge/Instagram-Oficial-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram">
+  </a>
+  <a href="https://x.com/App_YouChat">
+    <img src="https://img.shields.io/badge/X%20(Twitter)-Oficial-000000?style=for-the-badge&logo=x&logoColor=white" alt="X">
+  </a>
+</p>
+
+---
+
+## 📥 Descarga YouChat
+
+<p align="center">
+  <a href="http://www.apklis.cu/application/cu.alexgi.youchat/">
+    <img src="https://img.shields.io/badge/Descargar%20APK-Apklis%20Cuba-blueviolet?style=for-the-badge&logo=android&logoColor=white" alt="Descargar APK">
+  </a>
+  <a href="https://youchat.web.cu">
+    <img src="https://img.shields.io/badge/Visitar%20Web-youchat.web.cu-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Web Oficial">
+  </a>
+</p>
+
+---
+
+## 🎁 Apoya el Proyecto
+
+<p align="center">
+  <a href="https://github.com/maniabon76-gif/YouChat-/stargazers">
+    <img src="https://img.shields.io/github/stars/maniabon76-gif/YouChat-?style=for-the-badge&logo=github&logoColor=white&label=Dale%20una%20Estrella&color=yellow" alt="Estrella">
+  </a>
+  <a href="https://github.com/maniabon76-gif/YouChat-/network/members">
+    <img src="https://img.shields.io/github/forks/maniabon76-gif/YouChat-?style=for-the-badge&logo=github&logoColor=white&label=Haz%20un%20Fork&color=blue" alt="Fork">
+  </a>
+  <br>
+  <a href="https://t.me/YouChat_Grupo_Oficial">
+    <img src="https://img.shields.io/badge/Unirse%20al-Grupo-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Unirse al Grupo">
+  </a>
+  <a href="https://t.me/YouChat_Canal_Oficial">
+    <img src="https://img.shields.io/badge/Unirse%20al-Canal-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Unirse al Canal">
+  </a>
+</p>
+
+---
+
 ## 📜 License
 
 **Todos los derechos reservados © 2026 Milkár Lixán Pupo Riverón.**
