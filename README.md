@@ -189,6 +189,41 @@ Este proyecto y todo su contenido (código fuente, imágenes, diseño, textos y 
 
 ---
 
+## 📸 Capturas de Pantalla
+
+<div align="center">
+
+### 🖥️ Vista de Escritorio
+
+<a href="img/noticia-premium.png">
+  <img src="img/noticia-premium.png" alt="Vista Escritorio" width="80%">
+</a>
+
+### 📱 Vista Móvil
+
+<a href="img/noticia-instalar.png">
+  <img src="img/noticia-instalar.png" alt="Vista Móvil" width="40%">
+</a>
+
+</div>
+
+---
+
+## 🚀 Demo en Vivo
+
+<div align="center">
+
+<a href="https://youchat.web.cu">
+  <img src="https://img.shields.io/badge/🌐%20Ver%20Demo%20en%20Vivo-Click%20Aquí-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Ver Demo">
+</a>
+
+### 👉 [Toca aquí para abrir la web](https://youchat.web.cu) 👈
+
+</div>
+
+---
+
+
 ## 🙏 Agradecimientos
 
 <div align="center">
