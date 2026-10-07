@@ -1,4 +1,4 @@
-# ===== YOUCHAT WEB PLANA - HTACCESS VERSIÓN 1.4.0 =====
+# ===== YOUCHAT WEB PLANA - HTACCESS VERSIÓN 1.5.0 =====
 # Redirección a HTTPS + Seguridad + Rendimiento
 
 # ===== 1. FORZAR HTTPS =====
@@ -47,6 +47,7 @@ ErrorDocument 404 /index.html
     ExpiresByType image/gif "access plus 1 year"
     ExpiresByType image/svg+xml "access plus 1 year"
     ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType video/mp4 "access plus 1 year"
     ExpiresByType text/css "access plus 1 month"
     ExpiresByType application/javascript "access plus 1 month"
     ExpiresByType text/html "access plus 0 seconds"
@@ -59,6 +60,7 @@ ErrorDocument 404 /index.html
     AddType application/manifest+json .webmanifest
     AddType image/png .png
     AddType image/x-icon .ico
+    AddType video/mp4 .mp4
 </IfModule>
 
 # ===== 9. BLOQUEAR HOTLINKING DE IMÁGENES =====
