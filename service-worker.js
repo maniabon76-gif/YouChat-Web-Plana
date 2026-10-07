@@ -1,5 +1,5 @@
-/* ===== YOUCHAT SERVICE WORKER - VERSIÓN 1.4.0 ===== */
-const CACHE_NAME = 'youchat-v1.4.0';
+/* ===== YOUCHAT SERVICE WORKER - VERSIÓN 1.5.0 ===== */
+const CACHE_NAME = 'youchat-v1.5.0';
 const ASSETS = [
   './',
   './index.html',
@@ -8,6 +8,7 @@ const ASSETS = [
   './favicon.ico',
   './apple-touch-icon.png',
   './img/logo.png',
+  './img/hero-bg.mp4',
   './img/staff-milkar.png',
   './img/staff-disney.png',
   './img/staff-miguel.png',
@@ -40,7 +41,7 @@ self.addEventListener('install', event => {
   console.log('[SW] Instalando versión', CACHE_NAME);
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(ASSETS))
+      .then(cache => cache.addAll(ASSETS).catch(err => console.log('Algunas imágenes no se pudieron cachear:', err)))
       .then(() => self.skipWaiting())
   );
 });
