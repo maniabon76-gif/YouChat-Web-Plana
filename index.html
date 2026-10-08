@@ -250,6 +250,9 @@
         .version-block ul { list-style: none; padding: 0; }
         .version-block ul li { padding: 5px 0 5px 24px; position: relative; color: var(--text-light); font-size: 0.92rem; }
         .version-block ul li::before { content: "✅"; position: absolute; left: 0; font-size: 0.8rem; }
+        .version-block.v160 { border-left-color: #dc2626; background: linear-gradient(90deg, rgba(220,38,38,0.08), transparent); }
+        .version-block.v160 h4 { color: #dc2626; }
+        .version-block.v160 ul li::before { content: "🔴"; }
         .version-block.v150 { border-left-color: #9333ea; background: linear-gradient(90deg, rgba(147,51,234,0.10), transparent); }
         .version-block.v150 h4 { color: #9333ea; }
         .version-block.v150 ul li::before { content: "🟣"; }
@@ -259,8 +262,15 @@
         .version-block.v130 { border-left-color: var(--danger); background: linear-gradient(90deg, rgba(220,38,38,0.08), transparent); }
         .version-block.v130 h4 { color: var(--danger); }
         .version-block.v130 ul li::before { content: "🔴"; }
-        .version-block.new { border-left-color: var(--success); background: linear-gradient(90deg, rgba(16,185,129,0.08), transparent); }
-        .version-block.new h4 { color: var(--success); }
+        .version-block.v120 h4 { color: #06b6d4; }
+        .version-block.v120 { border-left-color: #06b6d4; background: linear-gradient(90deg, rgba(6,182,212,0.08), transparent); }
+        .version-block.v120 ul li::before { content: "🔵"; }
+        .version-block.v110 h4 { color: #f59e0b; }
+        .version-block.v110 { border-left-color: #f59e0b; background: linear-gradient(90deg, rgba(245,158,11,0.08), transparent); }
+        .version-block.v110 ul li::before { content: "🟡"; }
+        .version-block.v100 h4 { color: #10b981; }
+        .version-block.v100 { border-left-color: #10b981; background: linear-gradient(90deg, rgba(16,185,129,0.08), transparent); }
+        .version-block.v100 ul li::before { content: "🟢"; }
 
         .update-notes { background: var(--stat-bg); border: 2px solid var(--primary); border-radius: var(--radius); padding: 24px; margin-top: 24px; }
         .update-notes h4 { color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; font-size: 1.15rem; }
@@ -336,534 +346,186 @@
         .update-toast.visible { display: flex; }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* ===== NUEVOS BOTONES DEL HEADER (v1.4.0) ===== */
-        .header-btn {
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white;
-            width: 42px;
-            height: 42px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            flex-shrink: 0;
-        }
+        .header-btn { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: white; width: 42px; height: 42px; border-radius: 10px; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; transition: var(--transition); flex-shrink: 0; }
         .header-btn:hover { background: rgba(255,255,255,0.25); transform: scale(1.05); }
 
-        /* ===== PANEL DE BÚSQUEDA (v1.4.0) ===== */
-        .search-panel {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(15,23,42,0.85);
-            backdrop-filter: blur(8px);
-            z-index: 300;
-            display: none;
-            padding: 24px;
-            overflow-y: auto;
-        }
+        .search-panel { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15,23,42,0.85); backdrop-filter: blur(8px); z-index: 300; display: none; padding: 24px; overflow-y: auto; }
         .search-panel.visible { display: block; animation: fadeIn 0.3s ease; }
-        .search-box {
-            max-width: 700px;
-            margin: 40px auto 24px;
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 16px 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            box-shadow: var(--shadow-hover);
-            border: 2px solid var(--primary);
-        }
-        .search-box input {
-            flex: 1;
-            border: none;
-            outline: none;
-            background: transparent;
-            font-size: 1.1rem;
-            color: var(--text);
-            padding: 8px 0;
-        }
-        .search-close {
-            background: transparent;
-            border: none;
-            color: var(--text-light);
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 8px;
-            transition: var(--transition);
-        }
+        .search-box { max-width: 700px; margin: 40px auto 24px; background: var(--card-bg); border-radius: var(--radius); padding: 16px 20px; display: flex; align-items: center; gap: 12px; box-shadow: var(--shadow-hover); border: 2px solid var(--primary); }
+        .search-box input { flex: 1; border: none; outline: none; background: transparent; font-size: 1.1rem; color: var(--text); padding: 8px 0; }
+        .search-close { background: transparent; border: none; color: var(--text-light); cursor: pointer; padding: 8px; border-radius: 8px; transition: var(--transition); }
         .search-close:hover { background: var(--stat-bg); color: var(--primary); }
-        .search-results {
-            max-width: 700px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 16px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            max-height: 60vh;
-            overflow-y: auto;
-        }
+        .search-results { max-width: 700px; margin: 0 auto; background: var(--card-bg); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); border: 1px solid var(--border); max-height: 60vh; overflow-y: auto; }
         .search-hint { color: var(--text-light); text-align: center; padding: 20px; }
-        .search-result-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 16px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: var(--transition);
-            border-bottom: 1px solid var(--border);
-        }
+        .search-result-item { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 10px; cursor: pointer; transition: var(--transition); border-bottom: 1px solid var(--border); }
         .search-result-item:last-child { border-bottom: none; }
         .search-result-item:hover { background: var(--stat-bg); transform: translateX(4px); }
         .search-result-item .icon { color: var(--primary); flex-shrink: 0; }
         .search-result-item .info { flex: 1; }
         .search-result-item .info strong { display: block; color: var(--secondary); font-size: 0.95rem; margin-bottom: 2px; }
         .search-result-item .info span { color: var(--text-light); font-size: 0.82rem; }
-        .search-result-item .cat {
-            background: var(--card-tag-bg);
-            color: var(--card-tag-text);
-            padding: 4px 10px;
-            border-radius: 50px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
+        .search-result-item .cat { background: var(--card-tag-bg); color: var(--card-tag-text); padding: 4px 10px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
         .search-no-results { text-align: center; padding: 30px; color: var(--text-light); }
 
-        /* ===== PANEL DE USUARIO (v1.4.0) ===== */
-        .user-panel {
-            position: fixed;
-            top: 0; right: 0; bottom: 0;
-            width: 100%;
-            max-width: 400px;
-            background: var(--card-bg);
-            z-index: 300;
-            transform: translateX(100%);
-            transition: transform 0.35s ease;
-            box-shadow: -8px 0 30px rgba(0,0,0,0.3);
-            overflow-y: auto;
-        }
+        .user-panel { position: fixed; top: 0; right: 0; bottom: 0; width: 100%; max-width: 400px; background: var(--card-bg); z-index: 300; transform: translateX(100%); transition: transform 0.35s ease; box-shadow: -8px 0 30px rgba(0,0,0,0.3); overflow-y: auto; }
         .user-panel.visible { transform: translateX(0); }
         .user-panel-content { padding: 60px 28px 28px; position: relative; }
-        .user-panel-close {
-            position: absolute;
-            top: 16px; right: 16px;
-            background: var(--stat-bg);
-            border: none;
-            color: var(--text);
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
+        .user-panel-close { position: absolute; top: 16px; right: 16px; background: var(--stat-bg); border: none; color: var(--text); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); }
         .user-panel-close:hover { background: var(--primary); color: white; transform: rotate(90deg); }
-        .user-icon-big, .user-avatar-big {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 20px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2.5rem;
-            box-shadow: 0 8px 24px rgba(37,99,235,0.35);
-        }
+        .user-icon-big, .user-avatar-big { width: 100px; height: 100px; margin: 0 auto 20px; background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; box-shadow: 0 8px 24px rgba(37,99,235,0.35); }
         .user-panel h3 { text-align: center; color: var(--secondary); font-size: 1.4rem; margin-bottom: 8px; }
         .user-panel > .user-panel-content > div > p { text-align: center; color: var(--text-light); margin-bottom: 24px; }
         .user-email { text-align: center; color: var(--text-light); font-size: 0.9rem; margin-bottom: 20px; }
         .user-form .form-group { margin-bottom: 16px; }
         .user-form .form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 0.88rem; color: var(--secondary); }
-        .user-form .form-group input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            font-size: 1rem;
-            background: var(--bg);
-            color: var(--text);
-            transition: var(--transition);
-        }
-        .user-form .form-group input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
-        }
+        .user-form .form-group input { width: 100%; padding: 12px 16px; border: 1px solid var(--border); border-radius: 10px; font-size: 1rem; background: var(--bg); color: var(--text); transition: var(--transition); }
+        .user-form .form-group input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.15); }
         .user-form .btn { width: 100%; margin-top: 8px; }
         .user-note { font-size: 0.8rem; color: var(--text-light); text-align: center; margin-top: 16px; }
-        .user-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-        .user-stats > div {
-            background: var(--stat-bg);
-            border-radius: var(--radius);
-            padding: 16px;
-            text-align: center;
-            border: 1px solid var(--border);
-        }
+        .user-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+        .user-stats > div { background: var(--stat-bg); border-radius: var(--radius); padding: 16px; text-align: center; border: 1px solid var(--border); }
         .user-stats strong { display: block; font-size: 1.6rem; color: var(--primary); font-weight: 700; }
         .user-stats span { font-size: 0.75rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* ===== INDICADORES DE CONEXIÓN (v1.4.0) ===== */
-        .offline-indicator, .online-indicator {
-            position: fixed;
-            bottom: 90px;
-            left: 50%;
-            transform: translateX(-50%) translateY(20px);
-            padding: 12px 24px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.35s ease;
-            z-index: 250;
-            white-space: nowrap;
-        }
+        .offline-indicator, .online-indicator { position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%) translateY(20px); padding: 12px 24px; border-radius: 50px; display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 8px 24px rgba(0,0,0,0.3); opacity: 0; visibility: hidden; transition: all 0.35s ease; z-index: 250; white-space: nowrap; }
         .offline-indicator { background: #dc2626; color: white; }
         .online-indicator { background: #10b981; color: white; }
-        .offline-indicator.visible, .online-indicator.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-        }
+        .offline-indicator.visible, .online-indicator.visible { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 
-        /* ============================================ */
-        /* NUEVAS FUNCIONES - VERSIÓN 1.5.0              */
-        /* Video, Animaciones, Chat, Banner, Contador   */
-        /* ============================================ */
+        .hero-video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.25; filter: blur(2px); }
+        .hero-content-relative { position: relative; z-index: 1; }
 
-        /* ===== VIDEO DE FONDO EN EL HERO ===== */
-        .hero-video-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-            opacity: 0.25;
-            filter: blur(2px);
-        }
-        .hero-content-relative {
-            position: relative;
-            z-index: 1;
-        }
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* ===== ANIMACIONES AL SCROLL ===== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ===== BOTONES FLOTANTES (TELEGRAM + WHATSAPP) ===== */
-        .float-buttons {
-            position: fixed;
-            bottom: 24px;
-            left: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 98;
-        }
-        .float-btn {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-            transition: var(--transition);
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-            position: relative;
-            animation: floatPulse 3s ease-in-out infinite;
-        }
-        .float-btn:hover {
-            transform: scale(1.15) translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-        }
+        .float-buttons { position: fixed; bottom: 24px; left: 24px; display: flex; flex-direction: column; gap: 12px; z-index: 98; }
+        .float-btn { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 6px 20px rgba(0,0,0,0.3); transition: var(--transition); text-decoration: none; cursor: pointer; border: none; position: relative; animation: floatPulse 3s ease-in-out infinite; }
+        .float-btn:hover { transform: scale(1.15) translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
         .float-btn .icon { width: 26px; height: 26px; }
-        .float-btn.telegram {
-            background: linear-gradient(135deg, #26A5E4, #0088cc);
-        }
-        .float-btn.whatsapp {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-        }
-        .float-btn::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            left: 70px;
-            background: var(--secondary);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: var(--transition);
-        }
-        .float-btn:hover::after {
-            opacity: 1;
-            left: 66px;
-        }
-        @keyframes floatPulse {
-            0%, 100% { box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
-            50% { box-shadow: 0 6px 30px rgba(37,99,235,0.5); }
-        }
+        .float-btn.telegram { background: linear-gradient(135deg, #26A5E4, #0088cc); }
+        .float-btn.whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); }
+        .float-btn::after { content: attr(data-tooltip); position: absolute; left: 70px; background: var(--secondary); color: white; padding: 6px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 600; white-space: nowrap; opacity: 0; pointer-events: none; transition: var(--transition); }
+        .float-btn:hover::after { opacity: 1; left: 66px; }
+        @keyframes floatPulse { 0%, 100% { box-shadow: 0 6px 20px rgba(0,0,0,0.3); } 50% { box-shadow: 0 6px 30px rgba(37,99,235,0.5); } }
 
-        /* ===== BANNER DE DESCARGA DEL APK ===== */
-        .download-banner {
-            background: linear-gradient(135deg, #2563eb, #06b6d4);
-            color: white;
-            padding: 18px 24px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 97;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            transform: translateY(100%);
-            transition: transform 0.5s ease;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-        .download-banner.visible {
-            transform: translateY(0);
-        }
-        .download-banner .close-banner {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            flex-shrink: 0;
-        }
-        .download-banner .close-banner:hover {
-            background: rgba(255,255,255,0.35);
-            transform: rotate(90deg);
-        }
-        .download-banner a.btn-download {
-            background: white;
-            color: var(--primary);
-            padding: 10px 22px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            white-space: nowrap;
-        }
-        .download-banner a.btn-download:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-        }
+        .download-banner { background: linear-gradient(135deg, #2563eb, #06b6d4); color: white; padding: 18px 24px; text-align: center; position: fixed; bottom: 0; left: 0; right: 0; z-index: 97; box-shadow: 0 -4px 20px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; transform: translateY(100%); transition: transform 0.5s ease; font-weight: 600; font-size: 0.95rem; }
+        .download-banner.visible { transform: translateY(0); }
+        .download-banner .close-banner { background: rgba(255,255,255,0.2); border: none; color: white; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); flex-shrink: 0; }
+        .download-banner .close-banner:hover { background: rgba(255,255,255,0.35); transform: rotate(90deg); }
+        .download-banner a.btn-download { background: white; color: var(--primary); padding: 10px 22px; border-radius: 10px; text-decoration: none; font-weight: 700; transition: var(--transition); display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+        .download-banner a.btn-download:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
 
-        /* ===== CONTADOR DE VISITAS EN VIVO ===== */
-        .visitor-counter {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 50px;
-            padding: 8px 18px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--secondary);
-            box-shadow: var(--shadow);
-            margin: 8px 0;
-        }
-        .visitor-counter .dot {
-            width: 8px;
-            height: 8px;
-            background: #10b981;
-            border-radius: 50%;
-            animation: dotPulse 1.5s ease-in-out infinite;
-        }
-        @keyframes dotPulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.3); }
-        }
-        .visitor-counter strong {
-            color: var(--primary);
-            font-size: 1.05rem;
-        }
+        .visitor-counter { display: inline-flex; align-items: center; gap: 8px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 50px; padding: 8px 18px; font-size: 0.9rem; font-weight: 600; color: var(--secondary); box-shadow: var(--shadow); margin: 8px 0; }
+        .visitor-counter .dot { width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: dotPulse 1.5s ease-in-out infinite; }
+        @keyframes dotPulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
+        .visitor-counter strong { color: var(--primary); font-size: 1.05rem; }
 
-        /* ===== RELOJ EN VIVO DE CUBA ===== */
-        .cuba-clock {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--card-bg);
-            border: 2px solid var(--primary);
-            border-radius: 50px;
-            padding: 10px 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--secondary);
-            box-shadow: var(--shadow);
-            margin: 8px 0;
-        }
-        .cuba-clock .icon {
-            color: var(--primary);
-        }
-        .cuba-clock .clock-time {
-            font-family: 'Courier New', monospace;
-            font-size: 1.1rem;
-            color: var(--primary);
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-        .cuba-clock .clock-label {
-            color: var(--text-light);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .cuba-clock .flag {
-            font-size: 1.2rem;
-        }
+        .cuba-clock { display: inline-flex; align-items: center; gap: 10px; background: var(--card-bg); border: 2px solid var(--primary); border-radius: 50px; padding: 10px 20px; font-size: 0.9rem; font-weight: 600; color: var(--secondary); box-shadow: var(--shadow); margin: 8px 0; }
+        .cuba-clock .icon { color: var(--primary); }
+        .cuba-clock .clock-time { font-family: 'Courier New', monospace; font-size: 1.1rem; color: var(--primary); font-weight: 700; letter-spacing: 1px; }
+        .cuba-clock .clock-label { color: var(--text-light); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .cuba-clock .flag { font-size: 1.2rem; }
 
-        /* ===== FRASE DEL DÍA ROTATIVA ===== */
-        .phrase-rotator {
-            background: linear-gradient(135deg, rgba(37,99,235,0.08), rgba(6,182,212,0.06));
-            border-left: 4px solid var(--primary);
-            border-radius: 12px;
-            padding: 16px 24px;
-            margin: 20px 0;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            color: var(--secondary);
-            font-style: italic;
-            font-weight: 500;
-            min-height: 60px;
-        }
-        .phrase-rotator .icon {
-            color: var(--primary);
-            flex-shrink: 0;
-        }
-        .phrase-rotator .phrase-text {
-            flex: 1;
-            transition: opacity 0.5s ease;
-        }
-        .phrase-rotator .phrase-text.fade-out {
-            opacity: 0;
-        }
+        .phrase-rotator { background: linear-gradient(135deg, rgba(37,99,235,0.08), rgba(6,182,212,0.06)); border-left: 4px solid var(--primary); border-radius: 12px; padding: 16px 24px; margin: 20px 0; display: flex; align-items: center; gap: 14px; color: var(--secondary); font-style: italic; font-weight: 500; min-height: 60px; }
+        .phrase-rotator .icon { color: var(--primary); flex-shrink: 0; }
+        .phrase-rotator .phrase-text { flex: 1; transition: opacity 0.5s ease; }
+        .phrase-rotator .phrase-text.fade-out { opacity: 0; }
 
-        /* ===== CURSOR PERSONALIZADO ===== */
-        body.custom-cursor,
-        body.custom-cursor * {
-            cursor: none !important;
-        }
-        .custom-cursor-dot {
-            position: fixed;
-            width: 8px;
-            height: 8px;
-            background: var(--primary);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.1s ease;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 12px rgba(37,99,235,0.8);
-            display: none;
-        }
-        .custom-cursor-ring {
-            position: fixed;
-            width: 36px;
-            height: 36px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9998;
-            transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease;
-            transform: translate(-50%, -50%);
-            opacity: 0.6;
-            display: none;
-        }
-        body.custom-cursor .custom-cursor-dot,
-        body.custom-cursor .custom-cursor-ring {
-            display: block;
-        }
-        .custom-cursor-ring.hovering {
-            width: 56px;
-            height: 56px;
-            background: rgba(37,99,235,0.1);
-        }
+        body.custom-cursor, body.custom-cursor * { cursor: none !important; }
+        .custom-cursor-dot { position: fixed; width: 8px; height: 8px; background: var(--primary); border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform 0.1s ease; transform: translate(-50%, -50%); box-shadow: 0 0 12px rgba(37,99,235,0.8); display: none; }
+        .custom-cursor-ring { position: fixed; width: 36px; height: 36px; border: 2px solid var(--primary); border-radius: 50%; pointer-events: none; z-index: 9998; transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease; transform: translate(-50%, -50%); opacity: 0.6; display: none; }
+        body.custom-cursor .custom-cursor-dot, body.custom-cursor .custom-cursor-ring { display: block; }
+        .custom-cursor-ring.hovering { width: 56px; height: 56px; background: rgba(37,99,235,0.1); }
 
-        /* ===== PARTÍCULAS ANIMADAS DE FONDO ===== */
-        .particles-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-        .particle {
-            position: absolute;
-            background: var(--primary);
-            border-radius: 50%;
-            opacity: 0.15;
-            animation: floatParticle 20s linear infinite;
-        }
-        @keyframes floatParticle {
-            0% {
-                transform: translateY(100vh) translateX(0) scale(0);
-                opacity: 0;
-            }
-            10% { opacity: 0.2; }
-            90% { opacity: 0.2; }
-            100% {
-                transform: translateY(-100px) translateX(100px) scale(1);
-                opacity: 0;
-            }
-        }
+        .particles-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
+        .particle { position: absolute; background: var(--primary); border-radius: 50%; opacity: 0.15; animation: floatParticle 20s linear infinite; }
+        @keyframes floatParticle { 0% { transform: translateY(100vh) translateX(0) scale(0); opacity: 0; } 10% { opacity: 0.2; } 90% { opacity: 0.2; } 100% { transform: translateY(-100px) translateX(100px) scale(1); opacity: 0; } }
+
+        /* ============================================ */
+        /* NUEVAS FUNCIONES - VERSIÓN 1.6.0              */
+        /* ============================================ */
+
+        .rating-box { background: var(--card-bg); border: 2px solid var(--primary); border-radius: var(--radius); padding: 32px 24px; text-align: center; margin: 20px 0; box-shadow: var(--shadow); }
+        .rating-box h3 { color: var(--secondary); margin-bottom: 12px; font-size: 1.4rem; }
+        .rating-box p { color: var(--text-light); margin-bottom: 20px; }
+        .rating-stars { display: flex; justify-content: center; gap: 8px; font-size: 2.5rem; margin-bottom: 16px; }
+        .rating-stars .star { cursor: pointer; color: #cbd5e1; transition: var(--transition); user-select: none; }
+        .rating-stars .star:hover, .rating-stars .star.active { color: #fbbf24; transform: scale(1.2); }
+        .rating-result { color: var(--primary); font-weight: 700; font-size: 1.1rem; margin-top: 12px; }
+
+        .qr-box { background: var(--card-bg); border: 2px solid var(--primary); border-radius: var(--radius); padding: 32px 24px; text-align: center; margin: 20px 0; box-shadow: var(--shadow); }
+        .qr-box h3 { color: var(--secondary); margin-bottom: 16px; font-size: 1.4rem; }
+        .qr-box img, .qr-box canvas { max-width: 200px; border-radius: 12px; box-shadow: var(--shadow); margin: 0 auto 16px; display: block; background: white; padding: 12px; }
+        .qr-box p { color: var(--text-light); font-size: 0.9rem; }
+
+        .download-counter { background: linear-gradient(135deg, var(--primary), var(--accent)); border-radius: var(--radius); padding: 24px; text-align: center; color: white; margin: 20px 0; box-shadow: var(--shadow); }
+        .download-counter .number { font-size: 3rem; font-weight: 900; display: block; margin-bottom: 8px; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+        .download-counter .label { font-size: 1rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px; }
+
+        .screenshots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin: 20px 0; }
+        .screenshot-item { border-radius: var(--radius); overflow: hidden; border: 4px solid #1e293b; box-shadow: var(--shadow-hover); aspect-ratio: 9/16; background: #000; transition: var(--transition); cursor: pointer; }
+        .screenshot-item:hover { transform: translateY(-6px) scale(1.03); }
+        .screenshot-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .growth-chart { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 24px; margin: 20px 0; box-shadow: var(--shadow); }
+        .growth-chart h3 { color: var(--secondary); margin-bottom: 20px; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; }
+        .chart-bars { display: flex; align-items: flex-end; justify-content: space-around; height: 220px; gap: 12px; padding: 0 8px; border-bottom: 2px solid var(--border); }
+        .chart-bar { flex: 1; background: linear-gradient(180deg, var(--primary), var(--accent)); border-radius: 8px 8px 0 0; position: relative; min-height: 20px; transition: var(--transition); cursor: pointer; }
+        .chart-bar:hover { opacity: 0.8; transform: scaleY(1.05); }
+        .chart-bar::before { content: attr(data-value); position: absolute; top: -28px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; font-weight: 700; color: var(--primary); }
+        .chart-labels { display: flex; justify-content: space-around; padding: 12px 8px 0; gap: 12px; }
+        .chart-labels span { flex: 1; text-align: center; font-size: 0.75rem; color: var(--text-light); font-weight: 600; }
+
+        .users-map { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin: 20px 0; box-shadow: var(--shadow); }
+        .users-map h3 { color: var(--secondary); margin-bottom: 20px; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; }
+        .map-container { background: linear-gradient(135deg, #eff6ff, #e0f2fe); border-radius: var(--radius); padding: 24px; position: relative; min-height: 300px; overflow: hidden; }
+        [data-theme="dark"] .map-container { background: linear-gradient(135deg, #1e293b, #334155); }
+        .map-dot { position: absolute; width: 14px; height: 14px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 20px var(--primary); animation: mapPulse 2s ease-in-out infinite; }
+        .map-dot::after { content: attr(data-country); position: absolute; top: 20px; left: 50%; transform: translateX(-50%); background: var(--secondary); color: white; padding: 4px 8px; border-radius: 6px; font-size: 0.7rem; white-space: nowrap; font-weight: 600; }
+        @keyframes mapPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.4); opacity: 0.6; } }
+
+        .carousel-container { position: relative; overflow: hidden; border-radius: var(--radius); box-shadow: var(--shadow-hover); margin: 20px 0; background: #000; }
+        .carousel-track { display: flex; transition: transform 0.5s ease; }
+        .carousel-slide { min-width: 100%; aspect-ratio: 16/9; background: var(--stat-bg); }
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(37,99,235,0.85); color: white; border: none; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; transition: var(--transition); z-index: 2; }
+        .carousel-btn:hover { background: var(--primary); transform: translateY(-50%) scale(1.1); }
+        .carousel-btn.prev { left: 12px; }
+        .carousel-btn.next { right: 12px; }
+        .carousel-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 2; }
+        .carousel-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.5); border: none; cursor: pointer; transition: var(--transition); }
+        .carousel-dot.active { background: white; width: 24px; border-radius: 5px; }
+
+        .guides-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin: 20px 0; }
+        .guide-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); transition: var(--transition); text-align: center; }
+        .guide-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--primary); }
+        .guide-card .icon-xl { color: var(--primary); margin-bottom: 12px; }
+        .guide-card h4 { color: var(--secondary); margin-bottom: 8px; font-size: 1rem; }
+        .guide-card p { color: var(--text-light); font-size: 0.85rem; margin-bottom: 16px; }
+
+        .comparison-table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin: 20px 0; }
+        .comparison-table th, .comparison-table td { padding: 14px 16px; text-align: center; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+        .comparison-table th { background: var(--primary); color: white; font-weight: 700; font-size: 0.95rem; }
+        .comparison-table th:first-child { text-align: left; }
+        .comparison-table td:first-child { text-align: left; font-weight: 600; color: var(--secondary); }
+        .comparison-table tr:last-child td { border-bottom: none; }
+        .comparison-table tr:hover td { background: var(--stat-bg); }
+        .comparison-table .yes { color: #10b981; font-weight: 700; }
+        .comparison-table .no { color: #dc2626; font-weight: 700; }
+        .comparison-table .partial { color: #f59e0b; font-weight: 700; }
+        .comparison-table .youchat-col { background: linear-gradient(180deg, rgba(37,99,235,0.08), rgba(37,99,235,0.03)); border-left: 2px solid var(--primary); border-right: 2px solid var(--primary); }
+
+        .lang-menu { position: absolute; top: 60px; right: 0; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-hover); padding: 8px; display: none; z-index: 200; min-width: 160px; }
+        .lang-menu.visible { display: block; animation: fadeIn 0.2s ease; }
+        .lang-menu button { display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 14px; background: transparent; border: none; color: var(--text); font-size: 0.9rem; cursor: pointer; border-radius: 8px; transition: var(--transition); text-align: left; }
+        .lang-menu button:hover { background: var(--stat-bg); color: var(--primary); }
+        .lang-menu button.active { background: var(--primary); color: white; }
+
+        .motivational-toast { position: fixed; top: 90px; left: 50%; transform: translateX(-50%) translateY(-100px); background: linear-gradient(135deg, #2563eb, #06b6d4); color: white; padding: 16px 28px; border-radius: 50px; font-weight: 600; box-shadow: 0 8px 24px rgba(37,99,235,0.5); z-index: 999; opacity: 0; transition: all 0.5s ease; display: flex; align-items: center; gap: 10px; max-width: 90%; text-align: center; }
+        .motivational-toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+        .auto-theme-indicator { position: fixed; bottom: 90px; right: 24px; background: var(--card-bg); border: 2px solid var(--primary); color: var(--primary); padding: 10px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; box-shadow: var(--shadow); z-index: 96; display: flex; align-items: center; gap: 8px; opacity: 0; transition: var(--transition); }
+        .auto-theme-indicator.visible { opacity: 1; }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1100px) {
@@ -908,6 +570,14 @@
             .cuba-clock { padding: 8px 14px; font-size: 0.8rem; }
             .cuba-clock .clock-time { font-size: 0.95rem; }
             .phrase-rotator { padding: 12px 16px; font-size: 0.9rem; }
+            .screenshots-grid { grid-template-columns: repeat(2, 1fr); }
+            .chart-bars { height: 160px; gap: 6px; }
+            .chart-bar::before { font-size: 0.65rem; top: -24px; }
+            .carousel-btn { width: 36px; height: 36px; font-size: 1rem; }
+            .comparison-table th, .comparison-table td { padding: 10px 8px; font-size: 0.75rem; }
+            .rating-stars { font-size: 2rem; }
+            .qr-box canvas, .qr-box img { max-width: 150px; }
+            .download-counter .number { font-size: 2.2rem; }
         }
         .text-center { text-align: center; }
         .mt-20 { margin-top: 20px; }
@@ -946,6 +616,18 @@
         </button>
     </div>
 
+    <!-- ===== MENSAJE MOTIVACIONAL (v1.6.0) ===== -->
+    <div class="motivational-toast" id="motivationalToast">
+        <i data-lucide="sparkles" class="icon-lg"></i>
+        <span id="motivationalText">¡Hola YouChat!</span>
+    </div>
+
+    <!-- ===== INDICADOR MODO AUTOMÁTICO (v1.6.0) ===== -->
+    <div class="auto-theme-indicator" id="autoThemeIndicator">
+        <i data-lucide="moon" class="icon"></i>
+        <span>Modo automático</span>
+    </div>
+
     <!-- ===== HEADER ===== -->
     <header>
         <div class="header-container">
@@ -974,6 +656,9 @@
                     <li><a href="#" data-section="acerca" onclick="showSection('acerca'); return false;"><i data-lucide="info" class="icon"></i> Acerca de</a></li>
                     <li><a href="#" data-section="historial" onclick="showSection('historial'); return false;"><i data-lucide="history" class="icon"></i> Historial</a></li>
                     <li><a href="#" data-section="staff" onclick="showSection('staff'); return false;"><i data-lucide="users" class="icon"></i> Staff</a></li>
+                    <li><a href="#" data-section="valoraciones" onclick="showSection('valoraciones'); return false;"><i data-lucide="star" class="icon"></i> Valoraciones</a></li>
+                    <li><a href="#" data-section="guias" onclick="showSection('guias'); return false;"><i data-lucide="file-down" class="icon"></i> Guías</a></li>
+                    <li><a href="#" data-section="comparativa" onclick="showSection('comparativa'); return false;"><i data-lucide="bar-chart-3" class="icon"></i> Comparativa</a></li>
                     <li><a href="#" data-section="terminos" onclick="showSection('terminos'); return false;"><i data-lucide="file-text" class="icon"></i> Términos</a></li>
                     <li><a href="#" data-section="privacidad" onclick="showSection('privacidad'); return false;"><i data-lucide="lock" class="icon"></i> Privacidad</a></li>
                     <li><a href="#" data-section="contacto" onclick="showSection('contacto'); return false;"><i data-lucide="mail" class="icon"></i> Contáctenos</a></li>
@@ -990,7 +675,7 @@
         </div>
     </header>
 
-    <!-- ===== PANEL DE BÚSQUEDA (v1.4.0) ===== -->
+    <!-- ===== PANEL DE BÚSQUEDA ===== -->
     <div class="search-panel" id="searchPanel">
         <div class="search-box">
             <i data-lucide="search" class="icon"></i>
@@ -1002,7 +687,7 @@
         </div>
     </div>
 
-    <!-- ===== PANEL DE USUARIO (v1.4.0) ===== -->
+    <!-- ===== PANEL DE USUARIO ===== -->
     <div class="user-panel" id="userPanel">
         <div class="user-panel-content">
             <button onclick="closeUserPanel()" class="user-panel-close"><i data-lucide="x" class="icon"></i></button>
@@ -1042,7 +727,7 @@
         </div>
     </div>
 
-    <!-- ===== INDICADORES DE CONEXIÓN (v1.4.0) ===== -->
+    <!-- ===== INDICADORES DE CONEXIÓN ===== -->
     <div class="offline-indicator" id="offlineIndicator">
         <i data-lucide="wifi-off" class="icon"></i>
         <span>Sin conexión — Modo offline activo</span>
@@ -1084,7 +769,6 @@
                 </div>
             </div>
             <div class="hero">
-                <!-- Video de fondo (v1.5.0) -->
                 <video class="hero-video-bg" autoplay muted loop playsinline>
                     <source src="img/hero-bg.mp4" type="video/mp4">
                 </video>
@@ -1094,7 +778,6 @@
                     <h2>Bienvenido a YouChat</h2>
                     <p>Grupo Oficial de la app Cubana de Mensajería Instantánea a través del Correo Electrónico YouChat. Donde les informamos sobre noticias, fotos, memes, foros, tips, acerca de, actualizaciones de la app a la comunidad. YouChat su mejor Opción para estar en contacto y comunicado con Amigos y Familiares.</p>
 
-                    <!-- Reloj de Cuba y contador de visitas (v1.5.0) -->
                     <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin:16px 0;">
                         <div class="cuba-clock">
                             <i data-lucide="clock" class="icon"></i>
@@ -1112,7 +795,6 @@
                     <a href="https://t.me/YouChat_Grupo_Oficial" target="_blank" rel="noopener" class="btn"><i data-lucide="users" class="icon"></i> Grupo Oficial</a>
                     <a href="https://t.me/YouChat_Canal_Oficial" target="_blank" rel="noopener" class="btn btn-outline"><i data-lucide="megaphone" class="icon"></i> Canal Oficial</a>
 
-                    <!-- Frase del día (v1.5.0) -->
                     <div class="phrase-rotator">
                         <i data-lucide="quote" class="icon-lg"></i>
                         <span class="phrase-text" id="phraseText">Rápido, Seguro y Moderno 💙</span>
@@ -1434,8 +1116,29 @@
                 <p>Historial de cambios y actualizaciones.</p>
                 <p>Registro cronológico de todas las mejoras y funciones añadidas a la Web Plana de YouChat, desde su primera versión hasta la actualidad.</p>
 
+                <!-- ===== VERSIÓN 1.6.0 ===== -->
+                <div class="version-block v160 mt-20">
+                    <h4><i data-lucide="sparkles" class="icon"></i> Versión 1.6.0</h4>
+                    <span class="date">Última actualización</span>
+                    <ul>
+                        <li>Agregada sección de Valoraciones con estrellas.</li>
+                        <li>Agregado Código QR de descarga.</li>
+                        <li>Agregado Contador de descargas 1000+.</li>
+                        <li>Agregada Galería de capturas de la app.</li>
+                        <li>Agregado Gráfico de crecimiento de usuarios.</li>
+                        <li>Agregado Mapa de usuarios por país.</li>
+                        <li>Agregado Carrusel de imágenes automático.</li>
+                        <li>Agregadas Guías descargables en PDF.</li>
+                        <li>Agregada Comparativa YouChat vs WhatsApp vs Telegram.</li>
+                        <li>Agregados idiomas adicionales: Francés y Portugués.</li>
+                        <li>Agregado Modo oscuro automático según hora del día.</li>
+                        <li>Agregados Mensajes motivacionales al abrir la web.</li>
+                        <li>Agregadas bolitas de color en el Historial de Cambios.</li>
+                    </ul>
+                </div>
+
                 <!-- ===== VERSIÓN 1.5.0 ===== -->
-                <div class="version-block v150 mt-20">
+                <div class="version-block v150">
                     <h4><i data-lucide="sparkles" class="icon"></i> Versión 1.5.0</h4>
                     <span class="date">Última actualización</span>
                     <ul>
@@ -1493,7 +1196,7 @@
                 </div>
 
                 <!-- ===== VERSIÓN 1.2.0 ===== -->
-                <div class="version-block new">
+                <div class="version-block v120">
                     <h4><i data-lucide="sparkles" class="icon"></i> Versión 1.2.0</h4>
                     <ul>
                         <li>Reemplazados todos los emojis por iconos SVG de Lucide Icons.</li>
@@ -1507,8 +1210,8 @@
                 </div>
 
                 <!-- ===== VERSIÓN 1.1.0 ===== -->
-                <div class="version-block">
-                    <h4>Versión 1.1.0</h4>
+                <div class="version-block v110">
+                    <h4><i data-lucide="sparkles" class="icon"></i> Versión 1.1.0</h4>
                     <ul>
                         <li>Adicionado la Sección Staff de YouChat.</li>
                         <li>Adicionado el logo de YouChat a la Web Plana.</li>
@@ -1521,8 +1224,8 @@
                 </div>
 
                 <!-- ===== VERSIÓN 1.0.0 ===== -->
-                <div class="version-block">
-                    <h4>Versión 1.0.0</h4>
+                <div class="version-block v100">
+                    <h4><i data-lucide="sparkles" class="icon"></i> Versión 1.0.0</h4>
                     <span class="date">📅 Lanzamiento inicial</span>
                     <ul>
                         <li>Implementado el Botón de Ajustes.</li>
@@ -1558,7 +1261,7 @@
                 <div class="footer-signature">
                     <h3>YouChat Web Plana</h3>
                     <p><strong>youchat.web.cu</strong></p>
-                    <p>Versión 1.5.0</p>
+                    <p>Versión 1.6.0</p>
                     <p class="author">Desarrollado y Diseñado por Milkár Lixán Pupo Riverón</p>
                     <p class="mt-10">Todos los derechos reservados 2026 ©️</p>
                     <p>Copyright ©️ 2026 all the reserved by @Milkár</p>
@@ -1633,6 +1336,205 @@
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- ===== VALORACIONES Y DESCARGA (v1.6.0) ===== -->
+        <section id="valoraciones" class="section">
+            <h2 class="section-title"><i data-lucide="star" class="icon-lg"></i> Valoraciones</h2>
+            <p class="section-subtitle">Puntúa la app YouChat y descúbrela</p>
+
+            <div class="rating-box">
+                <h3>⭐ ¿Qué te parece YouChat?</h3>
+                <p>Toca las estrellas para dejar tu valoración</p>
+                <div class="rating-stars" id="ratingStars">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+                <div class="rating-result" id="ratingResult">Sin valoraciones todavía</div>
+            </div>
+
+            <div class="download-counter">
+                <span class="number" id="downloadCount">1,000+</span>
+                <span class="label">📥 Descargas totales</span>
+            </div>
+
+            <div class="qr-box">
+                <h3>📱 Escanea el QR para descargar</h3>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=http://www.apklis.cu/application/cu.alexgi.youchat/&bgcolor=ffffff&color=2563eb" alt="QR YouChat" id="qrImg">
+                <p>Escanea con tu móvil para ir a Apklis</p>
+            </div>
+
+            <h3 class="section-title mt-20"><i data-lucide="smartphone" class="icon-lg"></i> Capturas de la App</h3>
+            <p class="section-subtitle">Así se ve YouChat por dentro</p>
+            <div class="screenshots-grid">
+                <div class="screenshot-item"><img src="img/noticia-premium.png" alt="Captura 1"></div>
+                <div class="screenshot-item"><img src="img/noticia-apk.png" alt="Captura 2"></div>
+                <div class="screenshot-item"><img src="img/noticia-instalar.png" alt="Captura 3"></div>
+                <div class="screenshot-item"><img src="img/noticia-privado.png" alt="Captura 4"></div>
+            </div>
+
+            <div class="growth-chart">
+                <h3><i data-lucide="trending-up" class="icon-lg"></i> Crecimiento de Usuarios</h3>
+                <div class="chart-bars">
+                    <div class="chart-bar" data-value="150" style="height: 20%;"></div>
+                    <div class="chart-bar" data-value="320" style="height: 35%;"></div>
+                    <div class="chart-bar" data-value="550" style="height: 55%;"></div>
+                    <div class="chart-bar" data-value="780" style="height: 70%;"></div>
+                    <div class="chart-bar" data-value="1000+" style="height: 90%;"></div>
+                </div>
+                <div class="chart-labels">
+                    <span>2022</span>
+                    <span>2023</span>
+                    <span>2024</span>
+                    <span>2025</span>
+                    <span>2026</span>
+                </div>
+            </div>
+
+            <div class="users-map">
+                <h3><i data-lucide="map-pin" class="icon-lg"></i> ¿Dónde se usa YouChat?</h3>
+                <div class="map-container" id="mapContainer">
+                    <div class="map-dot" data-country="🇨🇺 Cuba" style="top: 40%; left: 30%;"></div>
+                    <div class="map-dot" data-country="🇺🇸 USA" style="top: 35%; left: 20%;"></div>
+                    <div class="map-dot" data-country="🇪🇸 España" style="top: 30%; left: 48%;"></div>
+                    <div class="map-dot" data-country="🇲🇽 México" style="top: 45%; left: 15%;"></div>
+                    <div class="map-dot" data-country="🇷🇺 Rusia" style="top: 25%; left: 65%;"></div>
+                </div>
+            </div>
+
+            <h3 class="section-title mt-20"><i data-lucide="images" class="icon-lg"></i> Galería</h3>
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide"><img src="img/noticia-premium.png" alt="Slide 1"></div>
+                    <div class="carousel-slide"><img src="img/noticia-instalar.png" alt="Slide 2"></div>
+                    <div class="carousel-slide"><img src="img/noticia-seguro.png" alt="Slide 3"></div>
+                    <div class="carousel-slide"><img src="img/logo.png" alt="Slide 4"></div>
+                </div>
+                <button class="carousel-btn prev" onclick="moverCarrusel(-1)"><i data-lucide="chevron-left" class="icon"></i></button>
+                <button class="carousel-btn next" onclick="moverCarrusel(1)"><i data-lucide="chevron-right" class="icon"></i></button>
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+        </section>
+
+        <!-- ===== GUÍAS DESCARGABLES (v1.6.0) ===== -->
+        <section id="guias" class="section">
+            <h2 class="section-title"><i data-lucide="file-down" class="icon-lg"></i> Guías Descargables</h2>
+            <p class="section-subtitle">Descarga los tutoriales en PDF</p>
+
+            <div class="guides-grid">
+                <div class="guide-card">
+                    <i data-lucide="book-open" class="icon-xl"></i>
+                    <h4>Guía de Instalación</h4>
+                    <p>Cómo descargar e instalar YouChat paso a paso</p>
+                    <a href="guias/instalacion.pdf" download class="btn"><i data-lucide="download" class="icon"></i> Descargar PDF</a>
+                </div>
+                <div class="guide-card">
+                    <i data-lucide="user-plus" class="icon-xl"></i>
+                    <h4>Guía de Registro</h4>
+                    <p>Aprende a crear tu cuenta de correo Nauta</p>
+                    <a href="guias/registro.pdf" download class="btn"><i data-lucide="download" class="icon"></i> Descargar PDF</a>
+                </div>
+                <div class="guide-card">
+                    <i data-lucide="message-square" class="icon-xl"></i>
+                    <h4>Guía de Uso</h4>
+                    <p>Todo sobre Chats, Now y Post</p>
+                    <a href="guias/uso.pdf" download class="btn"><i data-lucide="download" class="icon"></i> Descargar PDF</a>
+                </div>
+                <div class="guide-card">
+                    <i data-lucide="shield" class="icon-xl"></i>
+                    <h4>Guía de Seguridad</h4>
+                    <p>Consejos para proteger tu cuenta</p>
+                    <a href="guias/seguridad.pdf" download class="btn"><i data-lucide="download" class="icon"></i> Descargar PDF</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== COMPARATIVA CON OTRAS APPS (v1.6.0) ===== -->
+        <section id="comparativa" class="section">
+            <h2 class="section-title"><i data-lucide="bar-chart-3" class="icon-lg"></i> Comparativa</h2>
+            <p class="section-subtitle">YouChat vs otras apps de mensajería</p>
+
+            <div style="overflow-x: auto;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th class="youchat-col">📧 YouChat</th>
+                            <th>💬 WhatsApp</th>
+                            <th>✈️ Telegram</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Funciona por correo</td>
+                            <td class="youchat-col yes">✅ Sí</td>
+                            <td class="no">❌ No</td>
+                            <td class="no">❌ No</td>
+                        </tr>
+                        <tr>
+                            <td>Sin número de teléfono</td>
+                            <td class="youchat-col yes">✅ Sí</td>
+                            <td class="no">❌ No</td>
+                            <td class="partial">⚠️ Parcial</td>
+                        </tr>
+                        <tr>
+                            <td>Hecho en Cuba 🇨🇺</td>
+                            <td class="youchat-col yes">✅ Sí</td>
+                            <td class="no">❌ No</td>
+                            <td class="no">❌ No</td>
+                        </tr>
+                        <tr>
+                            <td>Encriptación E2E</td>
+                            <td class="youchat-col yes">✅ Opcional</td>
+                            <td class="yes">✅ Sí</td>
+                            <td class="partial">⚠️ Opcional</td>
+                        </tr>
+                        <tr>
+                            <td>Ahorro de datos</td>
+                            <td class="youchat-col yes">✅ Excelente</td>
+                            <td class="partial">⚠️ Medio</td>
+                            <td class="partial">⚠️ Medio</td>
+                        </tr>
+                        <tr>
+                            <td>Now (Estados)</td>
+                            <td class="youchat-col yes">✅ Sí</td>
+                            <td class="yes">✅ Sí</td>
+                            <td class="yes">✅ Sí</td>
+                        </tr>
+                        <tr>
+                            <td>100% Gratis</td>
+                            <td class="youchat-col yes">✅ Sí</td>
+                            <td class="yes">✅ Sí</td>
+                            <td class="yes">✅ Sí</td>
+                        </tr>
+                        <tr>
+                            <td>Stickers</td>
+                            <td class="youchat-col yes">✅ tgs/webp/gif</td>
+                            <td class="yes">✅ Sí</td>
+                            <td class="yes">✅ Sí</td>
+                        </tr>
+                        <tr>
+                            <td>Modo Claro/Oscuro</td>
+                            <td class="youchat-col yes">✅ Sí</td>
+                            <td class="yes">✅ Sí</td>
+                            <td class="yes">✅ Sí</td>
+                        </tr>
+                        <tr>
+                            <td>Sin publicidad</td>
+                            <td class="youchat-col yes">✅ Sí</td>
+                            <td class="yes">✅ Sí</td>
+                            <td class="yes">✅ Sí</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="text-center mt-20">
+                <a href="http://www.apklis.cu/application/cu.alexgi.youchat/" target="_blank" rel="noopener" class="btn"><i data-lucide="download" class="icon"></i> Descargar YouChat</a>
             </div>
         </section>
 
@@ -1816,7 +1718,7 @@
 
         <div class="footer-bottom">
             <p><strong>YouChat <i data-lucide="heart" class="icon-sm"></i></strong> — Rápido, Seguro y Moderno</p>
-            <p>youchat.web.cu | Versión 1.5.0</p>
+            <p>youchat.web.cu | Versión 1.6.0</p>
             <p>Todos los derechos reservados 2026 ©️ | Desarrollado por Milkár Lixán Pupo Riverón</p>
             <p>Marca registrada YouChat ®️©️</p>
         </div>
@@ -2095,7 +1997,7 @@
         }
 
         /* ============================================ */
-        /* FUNCIÓN 1: SISTEMA DE USUARIOS REGISTRADOS   */
+        /* FUNCIÓN: SISTEMA DE USUARIOS REGISTRADOS     */
         /* ============================================ */
         function registrarUsuario(e) {
             e.preventDefault();
@@ -2167,7 +2069,7 @@
         }
 
         /* ============================================ */
-        /* FUNCIÓN 2: BUSCADOR INTERNO                  */
+        /* FUNCIÓN: BUSCADOR INTERNO                    */
         /* ============================================ */
         function toggleSearch() {
             const panel = document.getElementById('searchPanel');
@@ -2255,7 +2157,7 @@
         }
 
         /* ============================================ */
-        /* FUNCIÓN 3: MULTI-IDIOMA (ESPAÑOL/INGLÉS)     */
+        /* FUNCIÓN: MULTI-IDIOMA (ES/EN/FR/PT)          */
         /* ============================================ */
         const traducciones = {
             es: {
@@ -2263,48 +2165,108 @@
                 foros: 'Foros', tips: 'Tips', faq: 'FAQ', tutorial: 'Tutorial',
                 anuncio: 'Anuncio', aniversario: 'Aniversario', links: 'Links',
                 telegram: 'Telegram', acerca: 'Acerca de', historial: 'Historial',
-                staff: 'Staff', terminos: 'Términos', privacidad: 'Privacidad', contacto: 'Contáctenos'
+                staff: 'Staff', valoraciones: 'Valoraciones', guias: 'Guías', comparativa: 'Comparativa',
+                terminos: 'Términos', privacidad: 'Privacidad', contacto: 'Contáctenos'
             },
             en: {
                 inicio: 'Home', noticias: 'News', fotos: 'Photos', memes: 'Memes',
                 foros: 'Forums', tips: 'Tips', faq: 'FAQ', tutorial: 'Tutorial',
                 anuncio: 'Announcement', aniversario: 'Anniversary', links: 'Links',
                 telegram: 'Telegram', acerca: 'About', historial: 'Changelog',
-                staff: 'Staff', terminos: 'Terms', privacidad: 'Privacy', contacto: 'Contact Us'
+                staff: 'Staff', valoraciones: 'Ratings', guias: 'Guides', comparativa: 'Comparison',
+                terminos: 'Terms', privacidad: 'Privacy', contacto: 'Contact Us'
+            },
+            fr: {
+                inicio: 'Accueil', noticias: 'Nouvelles', fotos: 'Photos', memes: 'Mèmes',
+                foros: 'Forums', tips: 'Astuces', faq: 'FAQ', tutorial: 'Tutoriel',
+                anuncio: 'Annonce', aniversario: 'Anniversaire', links: 'Liens',
+                telegram: 'Télégramme', acerca: 'À propos', historial: 'Historique',
+                staff: 'Équipe', valoraciones: 'Évaluations', guias: 'Guides', comparativa: 'Comparaison',
+                terminos: 'Conditions', privacidad: 'Confidentialité', contacto: 'Contactez-nous'
+            },
+            pt: {
+                inicio: 'Início', noticias: 'Notícias', fotos: 'Fotos', memes: 'Memes',
+                foros: 'Fóruns', tips: 'Dicas', faq: 'FAQ', tutorial: 'Tutorial',
+                anuncio: 'Anúncio', aniversario: 'Aniversário', links: 'Links',
+                telegram: 'Telegram', acerca: 'Sobre', historial: 'Histórico',
+                staff: 'Equipe', valoraciones: 'Avaliações', guias: 'Guias', comparativa: 'Comparação',
+                terminos: 'Termos', privacidad: 'Privacidade', contacto: 'Contate-nos'
             }
         };
 
         let idiomaActual = 'es';
 
         function toggleLang() {
-            idiomaActual = idiomaActual === 'es' ? 'en' : 'es';
-            try { localStorage.setItem('youchat-lang', idiomaActual); } catch(e) {}
+            // Crear/mostrar el menú de idiomas
+            let menu = document.getElementById('langMenu');
+            if (!menu) {
+                menu = document.createElement('div');
+                menu.id = 'langMenu';
+                menu.className = 'lang-menu';
+                menu.innerHTML = `
+                    <button onclick="cambiarIdioma('es')">🇪🇸 Español</button>
+                    <button onclick="cambiarIdioma('en')">🇬🇧 English</button>
+                    <button onclick="cambiarIdioma('fr')">🇫🇷 Français</button>
+                    <button onclick="cambiarIdioma('pt')">🇵🇹 Português</button>
+                `;
+                const langBtn = document.getElementById('langBtn');
+                if (langBtn) {
+                    langBtn.parentElement.style.position = 'relative';
+                    langBtn.parentElement.appendChild(menu);
+                }
+            }
+            menu.classList.toggle('visible');
+        }
+
+        function cambiarIdioma(lang) {
+            idiomaActual = lang;
+            try { localStorage.setItem('youchat-lang', lang); } catch(e) {}
+
+            const banderas = { es: '🇪🇸', en: '🇬🇧', fr: '🇫🇷', pt: '🇵🇹' };
             const langBtn = document.getElementById('langBtn');
-            if (langBtn) langBtn.textContent = idiomaActual === 'es' ? '🇪🇸' : '🇬🇧';
+            if (langBtn) langBtn.textContent = banderas[lang];
+
             document.querySelectorAll('nav a[data-section]').forEach(a => {
                 const seccion = a.dataset.section;
-                if (traducciones[idiomaActual][seccion]) {
+                if (traducciones[lang] && traducciones[lang][seccion]) {
                     const icon = a.querySelector('.icon');
                     const iconHTML = icon ? icon.outerHTML : '';
-                    a.innerHTML = iconHTML + ' ' + traducciones[idiomaActual][seccion];
+                    a.innerHTML = iconHTML + ' ' + traducciones[lang][seccion];
                 }
             });
+
             lucide.createIcons();
-            mostrarToast(idiomaActual === 'es' ? '🇪🇸 Idioma: Español' : '🇬🇧 Language: English');
+
+            const menu = document.getElementById('langMenu');
+            if (menu) menu.classList.remove('visible');
+
+            const mensajes = { es: '🇪🇸 Español', en: '🇬🇧 English', fr: '🇫🇷 Français', pt: '🇵🇹 Português' };
+            mostrarToast(mensajes[lang]);
         }
 
         function cargarIdioma() {
             try {
                 const saved = localStorage.getItem('youchat-lang');
                 if (saved && saved !== 'es') {
-                    idiomaActual = 'en';
-                    toggleLang();
+                    idiomaActual = saved;
+                    const banderas = { es: '🇪🇸', en: '🇬🇧', fr: '🇫🇷', pt: '🇵🇹' };
+                    const langBtn = document.getElementById('langBtn');
+                    if (langBtn) langBtn.textContent = banderas[saved];
+                    document.querySelectorAll('nav a[data-section]').forEach(a => {
+                        const seccion = a.dataset.section;
+                        if (traducciones[saved] && traducciones[saved][seccion]) {
+                            const icon = a.querySelector('.icon');
+                            const iconHTML = icon ? icon.outerHTML : '';
+                            a.innerHTML = iconHTML + ' ' + traducciones[saved][seccion];
+                        }
+                    });
+                    lucide.createIcons();
                 }
             } catch(e) {}
         }
 
         /* ============================================ */
-        /* FUNCIÓN 4: MODO SIN CONEXIÓN MEJORADO        */
+        /* FUNCIÓN: MODO SIN CONEXIÓN MEJORADO          */
         /* ============================================ */
         function detectarConexion() {
             const offline = document.getElementById('offlineIndicator');
@@ -2329,7 +2291,7 @@
             document.querySelectorAll('nav a[data-section]').forEach(a => {
                 a.addEventListener('click', () => {
                     if ('serviceWorker' in navigator && 'caches' in window) {
-                        caches.open('youchat-v1.5.0').then(cache => {
+                        caches.open('youchat-v1.6.0').then(cache => {
                             cache.add(window.location.href).catch(() => {});
                         });
                     }
@@ -2360,8 +2322,10 @@
             if (e.key === 'Escape') {
                 const search = document.getElementById('searchPanel');
                 const user = document.getElementById('userPanel');
+                const langMenu = document.getElementById('langMenu');
                 if (search && search.classList.contains('visible')) toggleSearch();
                 if (user && user.classList.contains('visible')) closeUserPanel();
+                if (langMenu && langMenu.classList.contains('visible')) langMenu.classList.remove('visible');
             }
             if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
                 e.preventDefault();
@@ -2370,11 +2334,10 @@
         });
 
         /* ============================================ */
-        /* NUEVAS FUNCIONES - VERSIÓN 1.5.0              */
-        /* Video, Animaciones, Chat, Banner, Contador   */
+        /* FUNCIONES v1.5.0                             */
         /* ============================================ */
 
-        /* ===== 1. ANIMACIONES AL SCROLL ===== */
+        /* ===== ANIMACIONES AL SCROLL ===== */
         function activarAnimacionesScroll() {
             const elementos = document.querySelectorAll('.card, .gallery-item, .forum-item, .staff-card, .stat-box, .section-title, .section-subtitle, .phrase-rotator');
             elementos.forEach(el => {
@@ -2394,7 +2357,7 @@
             elementos.forEach(el => observer.observe(el));
         }
 
-        /* ===== 2. BANNER DE DESCARGA ===== */
+        /* ===== BANNER DE DESCARGA ===== */
         function mostrarBanner() {
             const banner = document.getElementById('downloadBanner');
             if (!banner) return;
@@ -2416,7 +2379,7 @@
             } catch(e) {}
         }
 
-        /* ===== 3. RELOJ EN VIVO DE CUBA ===== */
+        /* ===== RELOJ EN VIVO DE CUBA ===== */
         function iniciarRelojCuba() {
             function actualizar() {
                 const el = document.getElementById('cubaTime');
@@ -2440,7 +2403,7 @@
             setInterval(actualizar, 1000);
         }
 
-        /* ===== 4. CONTADOR DE VISITAS EN VIVO ===== */
+        /* ===== CONTADOR DE VISITAS EN VIVO ===== */
         function iniciarContadorVisitas() {
             const el = document.getElementById('liveVisitors');
             if (!el) return;
@@ -2465,7 +2428,7 @@
             setInterval(simular, 5000);
         }
 
-        /* ===== 5. FRASE DEL DÍA ROTATIVA ===== */
+        /* ===== FRASE DEL DÍA ROTATIVA ===== */
         function iniciarFraseRotativa() {
             const frases = [
                 'Rápido, Seguro y Moderno 💙',
@@ -2496,7 +2459,7 @@
             }, 5000);
         }
 
-        /* ===== 6. CURSOR PERSONALIZADO ===== */
+        /* ===== CURSOR PERSONALIZADO ===== */
         function iniciarCursorPersonalizado() {
             if (!window.matchMedia('(pointer: fine)').matches) return;
 
@@ -2531,7 +2494,7 @@
             });
         }
 
-        /* ===== 7. PARTÍCULAS ANIMADAS DE FONDO ===== */
+        /* ===== PARTÍCULAS ANIMADAS DE FONDO ===== */
         function iniciarParticulas() {
             const container = document.getElementById('particlesContainer');
             if (!container) return;
@@ -2556,6 +2519,168 @@
 
                 container.appendChild(particle);
             }
+        }
+
+        /* ============================================ */
+        /* FUNCIONES v1.6.0                             */
+        /* ============================================ */
+
+        /* ===== VALORACIONES CON ESTRELLAS ===== */
+        function iniciarValoraciones() {
+            const stars = document.querySelectorAll('#ratingStars .star');
+            const result = document.getElementById('ratingResult');
+            if (!stars.length || !result) return;
+
+            let valoracionActual = 0;
+            try {
+                valoracionActual = parseInt(localStorage.getItem('youchat-rating') || '0');
+            } catch(e) {}
+
+            function pintarEstrellas(valor) {
+                stars.forEach((s, i) => {
+                    s.classList.toggle('active', i < valor);
+                });
+            }
+
+            if (valoracionActual > 0) {
+                pintarEstrellas(valoracionActual);
+                result.textContent = '⭐ Tu valoración: ' + valoracionActual + ' de 5';
+            }
+
+            stars.forEach(star => {
+                star.addEventListener('click', () => {
+                    const valor = parseInt(star.dataset.value);
+                    pintarEstrellas(valor);
+                    valoracionActual = valor;
+                    try {
+                        localStorage.setItem('youchat-rating', valor);
+                    } catch(e) {}
+                    result.textContent = '⭐ ¡Gracias! Valoraste con ' + valor + ' de 5';
+                    mostrarToast('⭐ ¡Gracias por tu valoración!');
+                });
+                star.addEventListener('mouseenter', () => {
+                    const valor = parseInt(star.dataset.value);
+                    stars.forEach((s, i) => s.classList.toggle('active', i < valor));
+                });
+            });
+
+            const contenedor = document.getElementById('ratingStars');
+            if (contenedor) {
+                contenedor.addEventListener('mouseleave', () => {
+                    pintarEstrellas(valoracionActual);
+                });
+            }
+        }
+
+        /* ===== CARRUSEL DE IMÁGENES ===== */
+        let carruselIndex = 0;
+        let carruselIntervalo = null;
+
+        function iniciarCarrusel() {
+            const track = document.getElementById('carouselTrack');
+            const dots = document.getElementById('carouselDots');
+            if (!track || !dots) return;
+
+            const slides = track.querySelectorAll('.carousel-slide');
+            const total = slides.length;
+
+            dots.innerHTML = '';
+            for (let i = 0; i < total; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => irASlide(i);
+                dots.appendChild(dot);
+            }
+
+            function actualizar() {
+                track.style.transform = 'translateX(-' + (carruselIndex * 100) + '%)';
+                document.querySelectorAll('.carousel-dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === carruselIndex);
+                });
+            }
+
+            window.irASlide = (i) => {
+                carruselIndex = i;
+                actualizar();
+            };
+
+            window.moverCarrusel = (dir) => {
+                carruselIndex = (carruselIndex + dir + total) % total;
+                actualizar();
+            };
+
+            if (carruselIntervalo) clearInterval(carruselIntervalo);
+            carruselIntervalo = setInterval(() => {
+                carruselIndex = (carruselIndex + 1) % total;
+                actualizar();
+            }, 4000);
+
+            track.addEventListener('mouseenter', () => clearInterval(carruselIntervalo));
+            track.addEventListener('mouseleave', () => {
+                carruselIntervalo = setInterval(() => {
+                    carruselIndex = (carruselIndex + 1) % total;
+                    actualizar();
+                }, 4000);
+            });
+        }
+
+        /* ===== MODO OSCURO AUTOMÁTICO ===== */
+        function iniciarModoAutomatico() {
+            const indicador = document.getElementById('autoThemeIndicator');
+            if (!indicador) return;
+
+            let temaGuardado = null;
+            try { temaGuardado = localStorage.getItem('youchat-theme'); } catch(e) {}
+            if (temaGuardado) return; // respetar preferencia del usuario
+
+            function aplicarPorHora() {
+                const hora = new Date().getHours();
+                const esNoche = hora >= 19 || hora < 7;
+                const temaActual = document.documentElement.getAttribute('data-theme');
+                const temaDeseado = esNoche ? 'dark' : 'light';
+
+                if (temaActual !== temaDeseado) {
+                    document.documentElement.setAttribute('data-theme', temaDeseado);
+                    const btn = document.getElementById('themeBtn');
+                    if (btn) {
+                        btn.innerHTML = temaDeseado === 'dark' ? '<i data-lucide="sun" class="icon"></i>' : '<i data-lucide="moon" class="icon"></i>';
+                        lucide.createIcons();
+                    }
+                }
+                indicador.classList.add('visible');
+                setTimeout(() => indicador.classList.remove('visible'), 4000);
+            }
+
+            aplicarPorHora();
+            setInterval(aplicarPorHora, 60000);
+        }
+
+        /* ===== MENSAJES MOTIVACIONALES ===== */
+        function iniciarMensajesMotivacionales() {
+            const mensajes = [
+                '¡Hola YouChat! 👋 Bienvenido',
+                'Rápido, Seguro y Moderno 💙',
+                '¡Gracias por visitarnos! 🇨🇺',
+                'Descubre lo nuevo de YouChat 📧',
+                'La mejor opción para comunicarte 💬',
+                'Hecho en Cuba, para el mundo 🌎',
+                '¡Únete a los YouChateros! 🫂',
+                'Tu privacidad está segura 🔒'
+            ];
+
+            const toast = document.getElementById('motivationalToast');
+            const texto = document.getElementById('motivationalText');
+            if (!toast || !texto) return;
+
+            const msg = mensajes[Math.floor(Math.random() * mensajes.length)];
+            texto.textContent = msg;
+
+            setTimeout(() => {
+                toast.classList.add('visible');
+                setTimeout(() => {
+                    toast.classList.remove('visible');
+                }, 4000);
+            }, 1000);
         }
 
         /* ============================================ */
@@ -2594,6 +2719,7 @@
             mostrarUsuarioLogueado();
             detectarConexion();
 
+            // Funciones v1.5.0
             setTimeout(() => {
                 activarAnimacionesScroll();
                 mostrarBanner();
@@ -2603,6 +2729,14 @@
                 iniciarCursorPersonalizado();
                 iniciarParticulas();
             }, 500);
+
+            // Funciones v1.6.0
+            setTimeout(() => {
+                iniciarValoraciones();
+                iniciarCarrusel();
+                iniciarModoAutomatico();
+                iniciarMensajesMotivacionales();
+            }, 800);
         });
 
         document.addEventListener('keydown', (e) => {
