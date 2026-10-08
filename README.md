@@ -16,7 +16,7 @@
 ---
 
 [![Sitio Web](https://img.shields.io/badge/Sitio%20Web-youchat.web.cu-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white)](https://youchat.web.cu)
-[![Versión](https://img.shields.io/badge/Versión-1.4.0-success?style=for-the-badge&logo=github&logoColor=white)](https://github.com/maniabon76-gif/YouChat-/releases)
+[![Versión](https://img.shields.io/badge/Versión-1.6.0-success?style=for-the-badge&logo=github&logoColor=white)](https://github.com/maniabon76-gif/YouChat-/releases)
 [![Estado](https://img.shields.io/badge/Estado-Activo-brightgreen?style=for-the-badge&logo=statuspage&logoColor=white)](#)
 [![Licencia](https://img.shields.io/badge/Licencia-Todos%20los%20derechos%20reservados-red?style=for-the-badge&logo=creativecommons&logoColor=white)](#-license)
 
@@ -41,11 +41,21 @@
 
 ## 🆕 Novedades de la Versión 1.6.0
 
-- 🔍 **Buscador interno** — Encuentra noticias, memes, foros y FAQ al instante
-- 🇪🇸🇬🇧 **Multi-idioma** — Cambia entre Español e Inglés desde el header
-- 👤 **Usuarios registrados** — Crea tu cuenta local y guarda favoritos
-- 📶 **Modo sin conexión mejorado** — Indicadores visuales cuando no hay internet
 
+- ⭐ **Valoraciones con estrellas** para puntuar la app.
+- 📱 **Código QR de descarga** para escanear con el móvil.
+- 📥 **Contador de descargas** que muestra 1000+.
+- 📸 **Galería de capturas** de la app.
+- 📈 **Gráfico de crecimiento** de usuarios por año.
+- 🗺️ **Mapa de usuarios** por país.
+- 🎠 **Carrusel de imágenes** automático.
+- 📄 **Guías descargables** en PDF.
+- 📊 **Comparativa** YouChat vs WhatsApp vs Telegram.
+- 🌍 **Idiomas adicionales**: Francés y Portugués.
+- 🌙 **Modo oscuro automático** según la hora del día.
+- 💬 **Mensajes motivacionales** al abrir la web.
+- 🎨 **Bolitas de color** en el Historial de Cambios.
+  
 ---
 
 ## ✨ Características
