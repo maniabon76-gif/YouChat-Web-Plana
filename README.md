@@ -1,6 +1,6 @@
 <!-- ============================================ -->
 <!-- YOUCHAT WEB PLANA - README OFICIAL           -->
-<!-- Versión 1.4.0 - youchat.web.cu               -->
+<!-- Versión 1.6.0 - youchat.web.cu               -->
 <!-- ============================================ -->
 
 <div align="center">
@@ -35,11 +35,11 @@
 
 ## 📌 Versión actual
 
-**Versión 1.4.0** — Última actualización: 23 de septiembre 2026
+**Versión 1.6.0** — Última actualización: 30 de septiembre 2026
 
 ---
 
-## 🆕 Novedades de la Versión 1.4.0
+## 🆕 Novedades de la Versión 1.6.0
 
 - 🔍 **Buscador interno** — Encuentra noticias, memes, foros y FAQ al instante
 - 🇪🇸🇬🇧 **Multi-idioma** — Cambia entre Español e Inglés desde el header
