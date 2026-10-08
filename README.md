@@ -251,25 +251,49 @@ Este proyecto y todo su contenido (código fuente, imágenes, diseño, textos y 
 
 ## 🚀 Release
 
-### 📌 Versión actual: `1.4.0`
+### 📌 Versión Actual: `1.6.0`
 
-### 🆕 Cambios recientes (v1.4.0)
+<div align="center">
 
-- 🔍 **Buscador interno** con resultados en tiempo real.
-- 🇪🇸🇬🇧 **Multi-idioma** Español/Inglés.
-- 👤 **Sistema de usuarios registrados** con localStorage.
-- 📶 **Modo sin conexión mejorado** con indicadores visuales.
-- 🎨 Botones nuevos en el header: buscar, idioma, usuario.
-- ✅ Todo el contenido anterior se mantiene sin cambios.
+<a href="https://github.com/maniabon76-gif/YouChat-/releases">
+  <img src="https://img.shields.io/badge/Versión-1.6.0-dc2626?style=for-the-badge&logo=github&logoColor=white" alt="Versión">
+</a>
+<a href="https://github.com/maniabon76-gif/YouChat-/releases">
+  <img src="https://img.shields.io/badge/🚀%20Ver%20Todos%20los-Releases-success?style=for-the-badge" alt="Releases">
+</a>
 
-### 📜 Versiones anteriores
+</div>
 
-| Versión | Cambios principales |
-|:-------:|---------------------|
-| **v1.3.0** | Favicons, manifest PWA, service-worker, .htaccess, robots.txt |
-| **v1.2.0** | Iconos SVG de Lucide, aniversario, formulario de contacto |
-| **v1.1.0** | Sección Staff, logo, pantalla "YouChat" en el slider |
-| **v1.0.0** | Lanzamiento inicial |
+### 🆕 Cambios Recientes (v1.6.0)
+
+- ⭐ **Valoraciones con estrellas** para puntuar la app.
+- 📱 **Código QR de descarga** para escanear con el móvil.
+- 📥 **Contador de descargas** que muestra 1000+.
+- 📸 **Galería de capturas** de la app.
+- 📈 **Gráfico de crecimiento** de usuarios por año.
+- 🗺️ **Mapa de usuarios** por país.
+- 🎠 **Carrusel de imágenes** automático.
+- 📄 **Guías descargables** en PDF.
+- 📊 **Comparativa** YouChat vs WhatsApp vs Telegram.
+- 🌍 **Idiomas adicionales**: Francés y Portugués.
+- 🌙 **Modo oscuro automático** según la hora del día.
+- 💬 **Mensajes motivacionales** al abrir la web.
+- 🎨 **Bolitas de color** en el Historial de Cambios.
+
+### 📜 Versiones Anteriores
+
+| Versión | Cambios principales | Ver |
+|:-------:|---------------------|:---:|
+| **v1.5.0** | Video de fondo, animaciones, botones flotantes, banner, contador, reloj, frase rotativa, cursor y partículas | [📜](https://github.com/maniabon76-gif/YouChat-/releases) |
+| **v1.4.0** | Buscador interno, Multi-idioma, Usuarios registrados, Modo sin conexión mejorado | [📜](https://github.com/maniabon76-gif/YouChat-/releases) |
+| **v1.3.0** | Favicons, manifest PWA, service-worker, .htaccess, robots.txt | [📜](https://github.com/maniabon76-gif/YouChat-/releases) |
+| **v1.2.0** | Iconos SVG de Lucide, aniversario, formulario de contacto | [📜](https://github.com/maniabon76-gif/YouChat-/releases) |
+| **v1.1.0** | Sección Staff, logo, pantalla "YouChat" en el slider | [📜](https://github.com/maniabon76-gif/YouChat-/releases) |
+| **v1.0.0** | Lanzamiento inicial | [📜](https://github.com/maniabon76-gif/YouChat-/releases) |
+
+### 🔗 Ver Más
+
+[🚀 Releases en GitHub](https://github.com/maniabon76-gif/YouChat-/releases) · [📜 Historial en la web](https://youchat.web.cu/#historial)
 
 ---
 
