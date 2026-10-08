@@ -1,4 +1,4 @@
-# ===== YOUCHAT WEB PLANA - ROBOTS.TXT VERSIÓN 1.5.0 =====
+# ===== YOUCHAT WEB PLANA - ROBOTS.TXT VERSIÓN 1.6.0 =====
 
 User-agent: *
 Allow: /
