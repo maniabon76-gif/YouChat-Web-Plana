@@ -1,5 +1,5 @@
-/* ===== YOUCHAT SERVICE WORKER - VERSIÓN 1.5.0 ===== */
-const CACHE_NAME = 'youchat-v1.5.0';
+/* ===== YOUCHAT SERVICE WORKER - VERSIÓN 1.6.0 ===== */
+const CACHE_NAME = 'youchat-v1.6.0';
 const ASSETS = [
   './',
   './index.html',
