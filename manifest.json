@@ -10,7 +10,7 @@
   "theme_color": "#2563eb",
   "lang": "es",
   "dir": "ltr",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "categories": ["social", "communication", "productivity"],
   "icons": [
     {
@@ -49,6 +49,12 @@
       "name": "Tips",
       "short_name": "Tips",
       "url": "./index.html#tips",
+      "icons": [{ "src": "img/logo.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Valoraciones",
+      "short_name": "Valorar",
+      "url": "./index.html#valoraciones",
       "icons": [{ "src": "img/logo.png", "sizes": "96x96" }]
     },
     {
