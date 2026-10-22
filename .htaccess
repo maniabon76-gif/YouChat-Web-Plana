@@ -69,7 +69,7 @@ ErrorDocument 404 /index.html
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteCond %{HTTP_REFERER} !^$
-    RewriteCond %{HTTP_REFERER} !^https://(www\.)?youchat\.web\.cu [NC]
+    RewriteCond %{HTTP_REFERER} !^https://(www\.)?web\.youchat\.cu [NC]
     RewriteCond %{HTTP_REFERER} !^https://(www\.)?github\.com [NC]
     RewriteRule \.(png|jpg|jpeg|gif|ico)$ - [F,NC]
 </IfModule>
