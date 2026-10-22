@@ -13,6 +13,7 @@ const ASSETS = [
   './img/staff-disney.png',
   './img/staff-miguel.png',
   './img/staff-dariel.png',
+  './img/staff-anthony.png', 
   './img/meme-1.png',
   './img/meme-2.png',
   './img/meme-3.png',
