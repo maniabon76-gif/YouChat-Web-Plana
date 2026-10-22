@@ -15,4 +15,4 @@ User-agent: Bingbot
 Allow: /
 
 # Sitemap
-Sitemap: https://youchat.web.cu/sitemap.xml
+Sitemap: https://web.youchat.cu/sitemap.xml
