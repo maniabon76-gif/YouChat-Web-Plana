@@ -1,7 +1,7 @@
 /* ============================================ */
 /* YOUCHAT WEB PLANA - SCRIPTS VERSIÓN 1.4.0   */
 /* Desarrollado por Milkár Lixán Pupo Riverón  */
-/* Sitio: web.yochat.cu                       */
+/* Sitio: www.yochat.cu                       */
 /* ============================================ */
 
 /* Este archivo está vacío intencionalmente.
