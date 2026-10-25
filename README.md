@@ -251,7 +251,7 @@ Este proyecto y todo su contenido (código fuente, imágenes, diseño, textos y 
 **Sí está permitido:**
 
 - ✅ Ver el código con fines educativos.
-- ✅ Consultar el proyecto en su sitio oficial: [youchat.web.cu](https://www.youchat.cu)
+- ✅ Consultar el proyecto en su sitio oficial: [www.youchat.cu](https://www.youchat.cu)
 
 **Marca registrada:** YouChat ®️©️
 
