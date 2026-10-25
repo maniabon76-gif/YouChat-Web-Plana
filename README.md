@@ -15,7 +15,7 @@
 
 ---
 
-[![Sitio Web](https://img.shields.io/badge/Sitio%20Web-web.youchat.cu-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white)](https://web.youchat.cu)
+[![Sitio Web](https://img.shields.io/badge/Sitio%20Web-www.youchat.cu-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white)](https://web.youchat.cu)
 [![Versión](https://img.shields.io/badge/Versión-1.6.0-success?style=for-the-badge&logo=github&logoColor=white)](https://github.com/maniabon76-gif/YouChat-/releases)
 [![Estado](https://img.shields.io/badge/Estado-Activo-brightgreen?style=for-the-badge&logo=statuspage&logoColor=white)](#)
 [![Licencia](https://img.shields.io/badge/Licencia-Todos%20los%20derechos%20reservados-red?style=for-the-badge&logo=creativecommons&logoColor=white)](#-license)
@@ -303,7 +303,7 @@ Este proyecto y todo su contenido (código fuente, imágenes, diseño, textos y 
 
 ### 🔗 Ver Más
 
-[🚀 Releases en GitHub](https://github.com/maniabon76-gif/YouChat-/releases) · [📜 Historial en la web](https://web.youchat.cu/#historial)
+[🚀 Releases en GitHub](https://github.com/maniabon76-gif/YouChat-/releases) · [📜 Historial en la web](https://www.youchat.cu/#historial)
 
 ---
 
