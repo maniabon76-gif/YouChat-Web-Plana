@@ -1,6 +1,6 @@
 <!-- ============================================ -->
 <!-- YOUCHAT WEB PLANA - README OFICIAL           -->
-<!-- Versión 1.6.0 - web.youchat.cu               -->
+<!-- Versión 1.6.0 - www.youchat.cu               -->
 <!-- ============================================ -->
 
 <div align="center">
@@ -206,8 +206,8 @@
   <a href="http://www.apklis.cu/application/cu.alexgi.youchat/">
     <img src="https://img.shields.io/badge/Descargar%20APK-Apklis%20Cuba-blueviolet?style=for-the-badge&logo=android&logoColor=white" alt="Descargar APK">
   </a>
-  <a href="https://web.youchat.cu">
-    <img src="https://img.shields.io/badge/Visitar%20Web-web.youchat.cu-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Web Oficial">
+  <a href="https://www.youchat.cu">
+    <img src="https://img.shields.io/badge/Visitar%20Web-www.youchat.cu-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Web Oficial">
   </a>
 </p>
 
@@ -251,7 +251,7 @@ Este proyecto y todo su contenido (código fuente, imágenes, diseño, textos y 
 **Sí está permitido:**
 
 - ✅ Ver el código con fines educativos.
-- ✅ Consultar el proyecto en su sitio oficial: [youchat.web.cu](https://web.youchat.cu)
+- ✅ Consultar el proyecto en su sitio oficial: [youchat.web.cu](https://www.youchat.cu)
 
 **Marca registrada:** YouChat ®️©️
 
@@ -331,7 +331,7 @@ Este proyecto y todo su contenido (código fuente, imágenes, diseño, textos y 
 
 <div align="center">
 
-<a href="https://web.youchat.cu">
+<a href="https://www.youchat.cu">
   <img src="https://img.shields.io/badge/🌐%20Ver%20Demo%20en%20Vivo-Click%20Aquí-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Ver Demo">
 </a>
 
